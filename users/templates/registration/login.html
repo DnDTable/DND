@@ -3,8 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
+    <h2>Log into your account</h2>
 </head>
 <body>
+    <form method="post" action="{% url 'users:login' %}">
+        {% csrf_token %}
+        {{ form }}
+        <button name="submit">Log in</button>
+    </form>
 
+    <input type="hidden" name="next" value="{% url 'board:index' %}"/>
 </body>
 </html>

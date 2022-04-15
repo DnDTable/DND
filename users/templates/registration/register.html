@@ -5,6 +5,12 @@
     <title>Title</title>
 </head>
 <body>
+    <form method="post" action="{% url 'users:register' %}">
+        {% csrf_token %}
+        {{ form }}
+        <button name="submit">Register</button>
+    </form>
 
+    <input type="hidden" name="next" value="{% url 'board:index' %}"/>
 </body>
 </html>
