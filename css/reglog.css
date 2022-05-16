@@ -8,6 +8,9 @@ body {
     align-items: center;
     overflow: hidden;
     justify-content: space-between;
+    background: url(picture/BG.jpg); 
+    background-size: cover;
+    background-attachment: fixed;
 }
 
 input,
@@ -24,7 +27,7 @@ select {
 .pic {
     width: 450px;
     height: 600px;
-    background-image: url(11.png);
+    background-image: url(picture/11.png);
     background-size: 95% 95%;
     background-repeat: no-repeat;
     display: flex;
@@ -32,6 +35,8 @@ select {
     justify-content: space-between;
     align-items: center;
     margin-top: 15px;
+    position: absolute; 
+    margin: 0px auto;
 }
 
 .button {
@@ -41,7 +46,7 @@ select {
     margin-right: 5%;
     display: flex;
     align-items: center;
-    background-image: url(13.png);
+    background-image: url(picture/13.png);
     background-size: 85% 85%;
     background-position: center;
     background-repeat: no-repeat;
