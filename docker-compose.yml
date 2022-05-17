@@ -1,18 +1,27 @@
 version: "3.8"
 
-
 services:
+#  web:
+#    build: ./DND
+#    command: python manage.py runserver 0.0.0.0:8000
+#    volumes:
+#      - ./DND/:/usr/src/DND/
+#    ports:
+#      - "8000:8000"
+#    env_file:
+#      - .env
+
   db:
     restart: always
-    image: postgres
+    image: postgres:14.2-alpine
     container_name: dnd-postgres
     environment:
-      - POSTGRES_USER=demo
-      - POSTGRES_PASSWORD=demo
-      - POSTGRES_DEMO=demo
-      - POSTGRES_PORT=5432
+      - POSTGRES_USER=root
+      - POSTGRES_PASSWORD=admin
     ports:
       - "5432:5432"
+    env_file:
+      - .env
     volumes:
       - postgres_data:/var/lib/postgresql/data/
 
@@ -27,7 +36,6 @@ services:
       PGADMIN_DEFAULT_EMAIL: pgadmin@pgadmin.org
       PGADMIN_DEFAULT_PASSWORD: root
     restart: always
-
 
 volumes:
   postgres_data:

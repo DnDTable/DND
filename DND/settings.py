@@ -82,7 +82,7 @@ WSGI_APPLICATION = 'DND.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django_postgres_extensions.backends.postgresql',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
         'NAME': 'demo',
         'USER': 'demo',
         'PASSWORD': 'demo',
