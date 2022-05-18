@@ -1,5 +1,14 @@
 from django.db import models
 
+
+class Field(models.Model):
+    title = models.CharField(max_length=120)
+    about = models.TextField(blank=True)
+
+    def __str__(self):
+        return {self.title: self.about}
+
+
 class Bestiary(models.Model):
     """Бестиарий с существами и расами"""
     # Basic
@@ -33,5 +42,44 @@ class Bestiary(models.Model):
     about_title = models.CharField(max_length=100, blank=True)
     about_description = models.TextField()
 
+    class Meta:
+        verbose_name_plural = 'Bestiaries'
+
     def __str__(self):
         return self.name
+
+
+class Race(models.Model):
+    title = models.CharField(max_length=50)
+    about = models.ForeignKey(Bestiary, on_delete=models.CASCADE)
+
+
+class Item(models.Model):
+    item_name = models.CharField(max_length=100)
+    field = models.ForeignKey(Field, on_delete=models.CASCADE)
+
+    class Meta:
+        verbose_name_plural = 'Items'
+
+    def __str__(self):
+        return self.item_name
+
+
+class Spell(models.Model):
+    # basic
+    title = models.CharField(max_length=100)
+    school = models.CharField(max_length=50)
+    cast_time = models.CharField(max_length=50)
+    cast_distance = models.CharField(max_length=50)
+    component = models.CharField(max_length=200)
+    duration = models.CharField(max_length=100)
+    classes = models.CharField(max_length=100)
+
+    # about
+    about = models.TextField()
+
+    class Meta:
+        verbose_name_plural = 'Spells'
+
+    def __str__(self):
+        return self.title
