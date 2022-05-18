@@ -6,5 +6,4 @@ urlpatterns = [
     path('users/', include('users.urls')),
     path('wiki/', include('wiki.urls')),
     path('', include('board.urls'))
-
 ]

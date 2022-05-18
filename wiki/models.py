@@ -6,11 +6,11 @@ class Field(models.Model):
     about = models.TextField(blank=True)
 
     def __str__(self):
-        return {self.title: self.about}
+        return self.title
 
 
 class Bestiary(models.Model):
-    """Бестиарий с существами и расами"""
+    """Бестиарий с существами"""
     # Basic
     name = models.CharField(max_length=50)
     ideology = models.CharField(max_length=50)
@@ -31,16 +31,13 @@ class Bestiary(models.Model):
     charisma = models.IntegerField(verbose_name='charisma bonus', default=0)
 
     # features
-    feature_title = models.CharField(max_length=100)
-    feature_description = models.TextField()
+    feature = models.ForeignKey(Field, on_delete=models.CASCADE, related_name='bestiary_features', default='')
 
     # actions
-    action_title = models.CharField(max_length=100)
-    action_description = models.TextField()
+    action = models.ForeignKey(Field, on_delete=models.CASCADE, related_name='bestiary_actions', default='')
 
     # about
-    about_title = models.CharField(max_length=100, blank=True)
-    about_description = models.TextField()
+    about = models.TextField()
 
     class Meta:
         verbose_name_plural = 'Bestiaries'
@@ -50,8 +47,40 @@ class Bestiary(models.Model):
 
 
 class Race(models.Model):
-    title = models.CharField(max_length=50)
-    about = models.ForeignKey(Bestiary, on_delete=models.CASCADE)
+    """Расы"""
+    # Basic
+    name = models.CharField(max_length=50)
+    ideology = models.CharField(max_length=50)
+    armor_class = models.CharField(max_length=50)
+    health_points = models.CharField(max_length=50)
+    size = models.CharField(max_length=50)
+    move_speed = models.CharField(max_length=50)
+    languages = models.CharField(max_length=100)
+    danger = models.CharField(max_length=50, default='')
+    susceptibility = models.CharField(max_length=200)
+
+    # characteristics
+    strength = models.IntegerField(verbose_name='strength bonus', default=0)
+    dexterity = models.IntegerField(verbose_name='dexterity bonus', default=0)
+    constitution = models.IntegerField(verbose_name='constitution bonus', default=0)
+    intelligence = models.IntegerField(verbose_name='intelligence bonus', default=0)
+    wisdom = models.IntegerField(verbose_name='wisdom bonus', default=0)
+    charisma = models.IntegerField(verbose_name='charisma bonus', default=0)
+
+    # features
+    feature = models.ForeignKey(Field, on_delete=models.CASCADE, related_name='race_features', default='')
+
+    # actions
+    action = models.ForeignKey(Field, on_delete=models.CASCADE, related_name='race_actions', default='')
+
+    # about
+    about = models.TextField()
+
+    class Meta:
+        verbose_name_plural = 'Races'
+
+    def __str__(self):
+        return self.name
 
 
 class Item(models.Model):

@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>race</title>
+</head>
+<body>
+    {% for race in races %}
+        <tr>
+            {% for field, value in race.fields.items %}
+                <td>{{ field }} : {{ value }}</td>
+            {% endfor %}
+        </tr>
+    {% empty %}
+        No races have been added yet
+    {% endfor %}
+</body>
+</html>
