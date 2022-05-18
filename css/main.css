@@ -1,81 +1,85 @@
 body {
-	text-align: left;
-	text-decoration: none;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	overflow: hidden;
-	justify-content: space-between;
-	align-content: flex-start;
-	background: url(pictures/BG.jpg); 
-	background-size: cover;
-	background-attachment: fixed;
+    text-align: left;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow: hidden;
+    justify-content: space-between;
+    align-content: flex-start;
+    background: url(pictures/BG.jpg);
+    background-size: cover;
+    background-attachment: fixed;
 }
-.header{
-	width: 800px;
-	height: 250px; 
+
+.header {
+    width: 600px;
+    height: 250px;
 }
-.logo{
-	width: 600px;
-	height: 250px; 
-	background-image: url(pictures/6.jpg);
-	background-size: 70%;
+
+.logo {
+    width: 600px;
+    height: 250px;
+    background-image: url(pictures/6.jpg);
+    background-size: 70%;
     background-position: center;
     background-repeat: no-repeat;
 }
-.body{
-	width:70%;
-	height: 300px;
-	display: flex;
-	flex-direction: column;
-	align-items: center;
-	justify-content: space-around;
-	margin-bottom: 20px; 
+
+.body {
+    width: 70%;
+    height: 300px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-around;
+    margin-bottom: 20px;
 }
-.loginb{
-	width: 300px;
-	height: 100px;
-	background-image: url(pictures/l.jpg);
-	background-size: 99% 99%;
-	background-position: center;
-	padding: 11px 25px;
-	cursor: pointer;
+
+.loginb {
+    width: 300px;
+    height: 100px;
+    background-image: url(pictures/l.jpg);
+    background-size: 99% 99%;
+    background-position: center;
+    padding: 11px 25px;
+    cursor: pointer;
     outline: none;
-    border:0;
+    border: 0;
 }
 
 .loginb:hover {
-	box-shadow: inset 0 0 30px;
-	  outline: none;
+    box-shadow: inset 0 0 30px;
+    outline: none;
 }
 
 .loginb:active {
-	position:relative;
-	top:5px;
-	left: 5px;
-	  outline: none;
-}
-.registerb{
-	width: 300px;
-	height: 100px;
-	background-image: url(pictures/r.jpg);
-	background-size: 99% 99%;
-	background-position: center;
-	padding: 11px 25px;
-	cursor: pointer;
+    position: relative;
+    top: 5px;
+    left: 5px;
     outline: none;
-    border:0;
-
 }
+
+.registerb {
+    width: 300px;
+    height: 100px;
+    background-image: url(pictures/r.jpg);
+    background-size: 99% 99%;
+    background-position: center;
+    padding: 11px 25px;
+    cursor: pointer;
+    outline: none;
+    border: 0;
+}
+
 .registerb:hover {
-	box-shadow: inset 0 0 30px;
-	  outline: none;
+    box-shadow: inset 0 0 30px;
+    outline: none;
 }
 
 .registerb:active {
-	position:relative;
-	top:5px;
-	left: 5px;
-	  outline: none;
+    position: relative;
+    top: 5px;
+    left: 5px;
+    outline: none;
 }
-

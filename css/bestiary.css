@@ -32,16 +32,11 @@ select {
 /*Поле кнопки*/
 
 .left_field {
-    width: 15%;
+    width: 250px;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-}
-
-.buttons {
-    width: 96%;
-    height: 100%;
 }
 
 .button1 {

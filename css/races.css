@@ -1,7 +1,7 @@
 body {
     font-family: segoe print;
-    width: 1920px;
-    height: 1080px;
+    width: 100%;
+    height: 100%;
     text-align: left;
     text-decoration: none;
     display: flex;
@@ -32,16 +32,11 @@ select {
 /*Поле кнопки*/
 
 .left_field {
-    width: 15%;
+    width: 250px;
     height: 100%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
-}
-
-.buttons {
-    width: 96%;
-    height: 100%;
 }
 
 .button1 {
@@ -55,8 +50,6 @@ select {
     -ms-appearance: none;
     cursor: pointer;
     outline: none;
-    opacity: 0.8;
-    border: 3px solid black;
 }
 
 .button1:hover {
@@ -89,12 +82,13 @@ select {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+    padding: 10px 0;
 }
 
 .button2 {
     margin-left: 10px;
     margin-top: 10px;
-    width: 50%;
+    width: 80%;
     height: 30px;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -188,7 +182,7 @@ select {
 /* Поле текста*/
 
 .text_field {
-    width: 62%;
+    width: 60%;
     min-height: 500px;
     background-image: url(pictures/bg_manual.png);
     background-position: center;
@@ -196,6 +190,7 @@ select {
     padding: 15px;
     border-radius: 10px 10px 10px 10px;
     border: 5px solid black;
+    margin-left: 15px;
 }
 
 
