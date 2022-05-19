@@ -1,0 +1,35 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+
+    <meta charset="UTF-8">
+    <title>DnD-Рассы</title>
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+</head>
+
+<body>
+    <div class="left_field">
+        <input type="button" src="css/pictures/2.png" alt="submit" name="button_main" class="button1" onclick="location.href='./contents.html'">
+        <div class="buttons_assist">
+            <div class="text_sprav"></div>
+            <div class="button_sprav">
+                <input type="image" src="{% static 'pictures/Rasy.png'%}" alt="submit" name="button_class" class="button3 race" onclick="location.href='/wiki/race'">
+                <input type="image" src="{% static 'pictures/Klassy.png'%}" alt="submit" name="button_class" class="button3" onclick="location.href='/wiki/classes'">
+                <input type="image" src="{% static 'pictures/Predmety.png'%}" alt="submit" name="button_class" class="button3" onclick="location.href='/wiki/items'">
+                <input type="image" src="{% static 'pictures/Bestriariy.png'%}" alt="submit" name="button_class" class="button3" onclick="location.href='/wiki/bestiary'">
+                <input type="image" src="{% static 'pictures/Zaklinania.png'%}" alt="submit" name="button_class" class="button3" onclick="location.href='/wiki/spells'">
+            </div>
+        </div>
+    </div>
+
+    <div class="text_field">
+        {% block content %}{% endblock %}
+    </div>
+    <div class="right_field"></div>
+    </div>
+</body>
+
+</html>

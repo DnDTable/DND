@@ -1,0 +1,13 @@
+{% extends 'wiki/base.html' %}
+
+{% block content %}
+    {% for race in races %}
+        <tr>
+            {% for field, value in race.fields.items %}
+                <td>{{ field }} : {{ value }}</td>
+            {% endfor %}
+        </tr>
+    {% empty %}
+        No races have been added yet
+    {% endfor %}
+{% endblock %}
