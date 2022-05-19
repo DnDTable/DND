@@ -3,7 +3,12 @@ import ReactDOM from 'react-dom/client';
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
+import GameTableMap from './GameTableMap';
+import GameTableBoss from './GameTableBoss';
 
+var table;
+// table = <GameTableMap />;
+table = <GameTableBoss />;
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 root.render(
@@ -11,7 +16,7 @@ root.render(
         {/* <div><input class="" type="checkbox" id="switch_map_cheakbox"></input></div> */}
         <div class="conteiner">
             <div class="game_table">
-                <App />
+                {table}
             </div>
             <div class="side_panel">
                 <p>Players:</p>
@@ -34,9 +39,9 @@ root.render(
                     </div>
                 </div>
                 <p>Active spells:</p>
-                <div class="players_list">
-
-                </div>
+                {/* <div class="players_list">
+                    <button onClick="">click me</button>
+                </div> */}
             </div>
         </div>
     </React.StrictMode>
