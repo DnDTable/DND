@@ -1,10 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>race</title>
-</head>
-<body>
+{% extends 'wiki/base.html' %}
+
+{% block content %}
     {% for race in races %}
         <tr>
             {% for field, value in race.fields.items %}
@@ -14,5 +10,4 @@
     {% empty %}
         No races have been added yet
     {% endfor %}
-</body>
-</html>
+{% endblock %}

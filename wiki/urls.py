@@ -3,6 +3,7 @@ from . import views
 
 app_name = 'wiki'
 urlpatterns = [
+    path('', views.index, name='index'),
     # Race
     path('race/', views.race, name='race'),
     # Beastiary

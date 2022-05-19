@@ -2,6 +2,12 @@ from django.shortcuts import render, get_object_or_404
 from .models import Race, Bestiary, Item, Spell, Field
 from django.core import serializers
 
+def index(request):
+    races = serializers.serialize("python", Race.objects.all())
+
+    context = {'races': races}
+    return render(request, 'wiki/race.html', context)
+
 def race(request):
     races = serializers.serialize("python", Race.objects.all())
 
