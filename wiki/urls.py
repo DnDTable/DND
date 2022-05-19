@@ -8,4 +8,10 @@ urlpatterns = [
     path('race/', views.race, name='race'),
     # Beastiary
     path('bestiary/', views.bestiary, name='bestiary'),
+    # Items
+    path('items/', views.items, name='items'),
+    # Spells
+    path('spells/', views.spells, name='spells'),
+    # Classes
+    path('classes/', views.clasess, name='classes'),
 ]
