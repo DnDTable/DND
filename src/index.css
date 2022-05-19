@@ -1,13 +1,125 @@
 body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+        'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+        sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+    font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+        monospace;
+}
+
+#root{
+    width: 100%;
+    height: calc(100% - 20px);
+}
+
+body {
+    /* overflow-x: hidden; */
+    padding: 10px;
+    /* height: 100%; */
+    height: calc(100vh - 20px);
+    min-width: 650px;
+    min-height: 400px;
+}
+
+
+
+.conteiner {
+    width: 100%;
+    height: 100%;
+}
+
+.game_table {
+    float: left;
+    width: calc(100% - 230px);
+    height: calc(100% + 20px);
+    background-color: darkgrey;
+}
+
+/* .side_panel css */
+.side_panel {
+    float: left;
+    width: 200px;
+    height: 100%;
+    background-color: darkgrey;
+    padding: 10px;
+    margin-left: 10px;
+    overflow: auto;
+}
+
+.side_panel::-webkit-scrollbar {
+    background-color: #0075ff;
+}
+.side_panel::-webkit-scrollbar-thumb{
+    background-color: brown;
+    border-radius: 10px;
+}
+
+
+.side_button {
+    background-color: #0075ff;
+    border-radius: 5px;
+    color: white;
+    border: none;
+    width: 100%;
+    height: 25px;
+}
+
+/* .side_panel content */
+.side_panel div{
+    margin-bottom: 5px;
+}
+
+/* .players_list */
+.players_list{
+    width: calc(100% - 10px);
+    height: 300px;
+    background-color: red;
+    padding-top: 5px;
+    padding-left: 5px;
+    padding-right: 5px;
+}
+
+.player_card{
+    background-color: blueviolet;
+    width: 100px;
+    height: 30px;
+    margin: 0 auto;
+    padding-top: 5px;
+    cursor: grab;
+}
+
+.player_card p{
+    text-align: center;
+    margin: 0;
+    height: 100%;
+
+    /* Выделение текста */
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+
+/* .game_table_map */
+.game_table_map{
+    width: 100%;
+    height: 100%;
+}
+
+/* .game_table_location */
+.game_table_location{
+    display: none;
+    margin: 0;
+}
+.game_table_location div{
+    height: 30%;
+    background-color: aqua;
+    margin-top: 10px;
 }

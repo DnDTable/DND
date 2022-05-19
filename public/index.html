@@ -1,43 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <meta charset="utf-8" />
-    <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
-    <meta name="viewport" content="width=device-width, initial-scale=1" />
-    <meta name="theme-color" content="#000000" />
-    <meta
-      name="description"
-      content="Web site created using create-react-app"
-    />
-    <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
-    <!--
-      manifest.json provides metadata used when your web app is installed on a
-      user's mobile device or desktop. See https://developers.google.com/web/fundamentals/web-app-manifest/
-    -->
-    <link rel="manifest" href="%PUBLIC_URL%/manifest.json" />
-    <!--
-      Notice the use of %PUBLIC_URL% in the tags above.
-      It will be replaced with the URL of the `public` folder during the build.
-      Only files inside the `public` folder can be referenced from the HTML.
+        <meta charset="utf-8" />
+        <link rel="icon" href="%PUBLIC_URL%/favicon.ico" />
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <link rel="apple-touch-icon" href="%PUBLIC_URL%/logo192.png" />
+        <title>HexGrid</title>
+    </head>
+    <body>
+        <div id="root"></div>
+    </body>
+    <script>
+        const canvas = document.getElementById('game_table');
+        const ctx = canvas.getContext('2d');
 
-      Unlike "/favicon.ico" or "favicon.ico", "%PUBLIC_URL%/favicon.ico" will
-      work correctly both with client-side routing and a non-root public URL.
-      Learn how to configure a non-root public URL by running `npm run build`.
-    -->
-    <title>React App</title>
-  </head>
-  <body>
-    <noscript>You need to enable JavaScript to run this app.</noscript>
-    <div id="root"></div>
-    <!--
-      This HTML file is a template.
-      If you open it directly in the browser, you will see an empty page.
+        const a = 2 * Math.PI / 6;
+        const r = 50;
 
-      You can add webfonts, meta tags, or analytics to this file.
-      The build step will place the bundled scripts into the <body> tag.
 
-      To begin the development, run `npm start` or `yarn start`.
-      To create a production bundle, use `npm run build` or `yarn build`.
-    -->
-  </body>
+        function init() {
+            drawGrid(canvas.width, canvas.height, ctx);
+        }
+        init();
+
+        function drawGrid(width, height, draw_el) {
+            for (let y = r; y + r * Math.sin(a) < height; y += r * Math.sin(a)) {
+                for (let x = r, j = 0; x + r * (1 + Math.cos(a)) < width; x += r * (1 + Math.cos(a)), y += (-1) ** j++ * r * Math.sin(a)) {
+                    drawHexagon(x, y, draw_el);
+                }
+            }
+        }
+
+        function drawHexagon(x, y, draw_el) {
+            draw_el.beginPath();
+            for (let i = 0; i < 6; i++) {
+                draw_el.lineTo(x + r * Math.cos(a * i), y + r * Math.sin(a * i));
+            }
+            draw_el.closePath();
+            draw_el.stroke();
+        }
+        alert("ballo");
+    </script>
 </html>
