@@ -4,23 +4,25 @@ import React from 'react';
 
 function App() {
     return (
-        <div className="App">
-        {/* <header className="App-header">
-            <img src={logo} className="App-logo" alt="logo" />
-            <p>
-                Edit <code>src/App.js</code> and go!
-            </p>
-            <a
-                className="App-link"
-                href="https://reactjs.org"
-                target="_blank"
-                rel="noopener noreferrer"
-            >
-            Learn React
-            </a>
-        </header> */}
+        <div class="game_table_map" >
+                
         </div>
     );
+    // return (
+    //     <div className="App">
+    //         <div class="game_table_location">
+    //             <div class="table_boss">
+    //                 dasdasd
+    //             </div>
+    //             <div class="table_cubes">
+                    
+    //             </div>
+    //             <div class="table_players">
+                    
+    //             </div>
+    //         </div>
+    //     </div>
+    // );
 }
 
 export default App;
