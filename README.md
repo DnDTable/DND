@@ -21,5 +21,5 @@ The main function of our project is the game table, which facilitates the visual
   
  # How to run
   1. Run Docker-Compose file: <code> $ docker-compose up </code>
-  2. Make Django db migrations: <code> $ python manage.py migrate</code>
+  2. Make Django db migrations: <code> $ python manage.py migrate</code> (Only first run)
   3. Run Django server: <code>python manage.py runserver</code>
