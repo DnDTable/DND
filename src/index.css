@@ -1,3 +1,7 @@
+html {
+    width: 100%;
+    height: 100%;
+}
 body {
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
@@ -6,6 +10,13 @@ body {
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
     background-image: url(../public/bg_7.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% 100%;
+    /* overflow-x: hidden; */
+    /* padding: 10px; */
+    height: 100%;
+    min-width: 1000px;
+    min-height: 400px;
 }
 
 code {
@@ -13,18 +24,9 @@ code {
         monospace;
 }
 
-/* #root{
+#root{
     width: 100%;
-    height: calc(100% - 20px);
-} */
-
-body {
-    /* overflow-x: hidden; */
-    padding: 10px;
-    /* height: 100%; */
-    height: calc(100vh - 40px);
-    min-width: 650px;
-    min-height: 400px;
+    height: 100%;
 }
 
 * {
@@ -39,25 +41,18 @@ body {
 }
 
 .conteiner {
-    width: 100%;
-    height: 100%;
-}
-
-.game_table {
-    float: left;
-    width: calc(100% - 230px);
-    height: calc(100% + 20px);
-    background-color: darkgrey;
+  width: 100%;
+  height: 100%;
 }
 
 /* .side_panel css */
 .side_panel {
     float: left;
     width: 200px;
-    height: calc(100% + 20px);
-    background-color: darkgrey;
+    height: calc(100% - 20px);
+    /* background-color: darkgrey; */
     padding: 0 10px;
-    margin-left: 10px;
+    margin: 10px 10px;
     overflow: auto;
 
     background-image: url(../public/bg_5.png);
@@ -76,6 +71,10 @@ body {
     border-radius: 10px;
 }
 
+/* .side_panel content */
+.side_panel div{
+  margin-bottom: 5px;
+}
 
 .side_button {
     background-color: #0075ff;
@@ -84,11 +83,6 @@ body {
     border: none;
     width: 100%;
     height: 25px;
-}
-
-/* .side_panel content */
-.side_panel div{
-    margin-bottom: 5px;
 }
 
 /* .players_list */
@@ -136,6 +130,15 @@ body {
     height: 100%;
 }
 
+
+.game_table {
+    float: left;
+    width: calc(100% - 250px);
+    height: calc(100% - 20px);
+    margin: 10px 0 10px 10px;
+    /* background-color: darkgrey; */
+}
+
 /* .game_table_map */
 .game_table_map{
     width: 100%;
@@ -146,33 +149,34 @@ body {
 .game_table_boss{
     width: 100%;
     height: 100%;
-    margin: 0;    
-    background-image: url(../public/bg_4.jpg);
-    background-size: 100% auto;
+    margin: 0;
 }
 .game_table_boss_div{
     width: 100%;
     height: 30%;
-    background-color: aqua;
     margin-bottom: 10px;
 }
 .game_table_boss_div.first{
     background-image: url(../public/bg_3.jpg);
+    background-repeat: no-repeat;
+    background-size: 100% auto;
 }
 .game_table_boss_div.second{
     background-image: url(../public/bg_2.jpg);
     padding-top: 10px;
+    background-repeat: no-repeat;
+    background-size: 100% auto;
 }
 .game_table_boss_div.second p{
-    background-color: #201e1ea1;
     padding: 5px;
     color: white;
 }
 .game_table_boss_div.third{
     background-image: url(../public/bg_1.png);
+    background-repeat: no-repeat;
+    background-size: 100% auto;
 }
 .game_table_boss_div.second button{
-    background-color: #611717;
     border-radius: 5px;
     width: 62px;
     height: 62px;
