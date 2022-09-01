@@ -67,8 +67,27 @@ select {
 
 .button2 {
     margin-left: 10px;
-    margin-top: 10px;
     width: 50%;
+    height: 30px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.button2:hover {
+    transition: 0.3s;
+    opacity: 0.8;
+    padding: 5px;
+    box-shadow: 0 0 5px 5px;
+    margin-left: 20px;
+}
+
+.button3 {
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 70%;
     height: 30px;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -82,9 +101,17 @@ select {
     margin-left: 20px;
 }
 
-.button3 {
+.button3:hover {
+    transition: 0.3s;
+    opacity: 0.8;
+    padding: 5px;
+    box-shadow: 0 0 5px 5px;
+    margin-left: 20px;
+}
+
+.button4 {
     margin-left: 10px;
-    width: 70%;
+    width: 85%;
     height: 30px;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -93,7 +120,45 @@ select {
     outline: none;
 }
 
-.button3:hover {
+.button4:hover {
+    transition: 0.3s;
+    opacity: 0.8;
+    padding: 5px;
+    box-shadow: 0 0 5px 5px;
+    margin-left: 20px;
+}
+
+.button5 {
+    margin-left: 10px;
+    width: 85%;
+    height: 35px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.button5:hover {
+    transition: 0.3s;
+    opacity: 0.8;
+    padding: 5px;
+    box-shadow: 0 0 5px 5px;
+    margin-left: 20px;
+}
+
+.button6 {
+    margin-left: 10px;
+    width: 85%;
+    height: 30px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.button6:hover {
     transition: 0.3s;
     opacity: 0.8;
     padding: 5px;
