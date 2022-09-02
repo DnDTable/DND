@@ -1,17 +1,27 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-    <h2>Log into your account</h2>
-</head>
-<body>
-    <form method="post" action="{% url 'users:login' %}">
-        {% csrf_token %}
-        {{ form }}
-        <button name="submit">Log in</button>
-    </form>
+<html lang="ru" >
 
-    <input type="hidden" name="next" value="{% url 'board:index' %}"/>
+<head>
+
+  <meta charset="UTF-8">
+  <title>Авторизация</title>
+  <link rel="stylesheet" href="css/login.css">
+  <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+ 
+</head>
+
+<body>
+	<div class="pic">
+		<div class="button">
+			<input type="button" name="button" class="button1">
+		</div>
+		<div class="text">
+		<input name="login" type="text" class="input_username" placeholder="Логин"  />
+			<div class="user-icon"></div>
+		<input name="password" type="password" class="input_password" placeholder="Пароль"/>
+			<div class="pass-icon"></div>		
+		</div>
+	</div>
 </body>
+
 </html>

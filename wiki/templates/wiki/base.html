@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+
+    <meta charset="UTF-8">
+    <title>DnD-Главная</title>
+    <link rel="stylesheet" href="css/contents.css">
+    <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
+
+</head>
+
+<body>
+    <div class="left_field">
+        <input type="button" src="tmp/pictures/2.png" alt="submit" name="button_main" class="button1" onclick="location.href='./contents.html'">
+        <div class="buttons_assist">
+            <div class="text_sprav"></div>
+            <div class="button_sprav">
+                <input type="image" src="tmp/pictures/Rasy.png" alt="submit" name="button_class" class="button2" onclick="location.href='./races.html'">
+                <input type="image" src="tmp/pictures/Klassy.png" alt="submit" name="button_class" class="button3" onclick="location.href='./classes.html'">
+                <input type="image" src="tmp/pictures/Predmety.png" alt="submit" name="button_class" class="button4" onclick="location.href='./items.html'">
+                <input type="image" src="tmp/pictures/Bestriariy.png" alt="submit" name="button_class" class="button5" onclick="location.href='./bestiary.html'">
+                <input type="image" src="tmp/pictures/Zaklinania.png" alt="submit" name="button_class" class="button6" onclick="location.href='./spells.html'">
+            </div>
+        </div>
+    </div>
+    {% block content %}{% endblock content %}
+</body>
+</html>

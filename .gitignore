@@ -1,3 +1,4 @@
+staticfiles-cdn/
 *.sqlite3
 __pycache__/
 venv/

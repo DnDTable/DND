@@ -3,6 +3,8 @@ from django.contrib.auth import login
 from django.contrib.auth.forms import UserCreationForm
 
 
+def main(request):
+    return render(request, 'registration/main.html')
 def register(request):
     """Регистрирует нового пользователя"""
     if request.method != 'POST':
@@ -20,4 +22,6 @@ def register(request):
 
     # Вывести пустую или недействительную форму
     context = {'form': form}
-    return render(request, 'registration/register.html', context)
+    return render(request, 'registration/reglog.html', context)
+def login(request):
+    pass
