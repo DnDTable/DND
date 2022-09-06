@@ -1,6 +1,19 @@
-.cell{
+.cells{
     background-color: bisque;
     border: solid 1px black;
-    width: 100px;
-    height: 100px;
+}
+.cells p{
+    vertical-align: middle;
+    /* margin: auto 0; */
+}
+
+table{
+    width: 100%;
+    height: 100%;
+    /*подключаем сетку*/
+    display: grid;
+    /*формируем по 4 одинаковых строки и столбца*/
+    grid-template-columns: repeat(13, 100px);
+    grid-template-rows: repeat(10, 100px);
+    overflow: hidden;
 }

@@ -2,11 +2,157 @@ import React, {useState} from 'react';
 import './GameTableMap.css';
 
 function GameTableMap() {
-    
-    const[cells, setCells] = useState (
-        
+    // console.warn("asdasdasdasdasdasdasdasdads: " + App.)
+    const [cellTemp, setCellTemp] = useState(
     )
-    
+
+
+    const[cells, setCells] = useState ([
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+        {id: 0, text: "none"},
+    ])
+
+
     const[currentPlayerColor, setCurrentPlayerColor] = useState("#0075ff")
 
     function dragStartHeandler (e, card){
@@ -22,12 +168,13 @@ function GameTableMap() {
     }
 
     function dragOverHeandler(e){
-        if (e.target.className == "cell")
-            console.log(e.target.className)
-        if(true){ // e.className == "cell"
-            e.preventDefault()
-            // e.target.style.background = 'lightgray'
-        }
+        // if (e.target.className == "cell")
+        //     console.log( card.className)
+        // if(true){ // e.className == "cell"
+        //     e.preventDefault()
+        //     // e.target.style.background = 'lightgray'
+        // }
+        e.preventDefault()
     }
     
     function DropHeandler(e, card){
@@ -35,42 +182,38 @@ function GameTableMap() {
         // console.log('drop')
         // console.log('drop is', card)
         // console.log('drop to', e)
+        e.target.text = 'yes it'
         e.target.style.background = 'red';
-        e.style.background = 'green';
+        // e.style.background = 'green';
     }
-
+    
     return (
         <div className="game_table_map" >
             <table>
-                <tr>
-                    <th className="cell"
-                        draggable = {false}
-                        onDragStart = {(e) => dragStartHeandler(e, this)}
-                        onDragLeave = {(e) => dragLeaveHeandler(e)}
-                        onDragEnd = {(e) => dragEndHeandler(e)}
-                        onDragOver = {(e) => dragOverHeandler(e)}
-                        onDrop = {(e) => DropHeandler(e, this)}>
-                        asd
-                    </th>
-                    <th className="cell"
+                {cells.map((cell) =>
+                    <div className="cells"
                     draggable = {false}
                     onDragStart = {(e) => dragStartHeandler(e, this)}
                     onDragLeave = {(e) => dragLeaveHeandler(e)}
                     onDragEnd = {(e) => dragEndHeandler(e)}
                     onDragOver = {(e) => dragOverHeandler(e)}
-                    onDrop = {(e) => DropHeandler(e, this)}>asd</th>
-                    <th className="cell">asd</th>
-                </tr>
-                <tr>
-                    <th className="cell">dsa</th>
-                    <th className="cell">dsa</th>
-                    <th className="cell">dsa</th>
-                </tr>
-                <tr>
-                    <th className="cell">qwe</th>
-                    <th className="cell">qwe</th>
-                    <th className="cell">qwe</th>
-                </tr>
+                    onDrop = {(e) => DropHeandler(e, this)}>
+                        {/* <p>{cell.text}</p> */}
+                    </div>
+                )}
+                {/* {playerCards.map((card) =>
+                        <div className={card.className}
+                        draggable = {true}
+                        onDragStart = {(e) => dragStartHeandler(e, card)}
+                        onDragLeave = {(e) => dragLeaveHeandler(e)}
+                        onDragEnd = {(e) => dragEndHeandler(e)}
+                        onDragOver = {(e) => dragOverHeandler(e)}
+                        onDrop = {(e) => DropHeandler(e, card)}>
+
+                            <div className={card.portret}></div>
+                            <p>{card.name}</p>
+                        </div>
+                    )} */}
             </table>
         </div>
     );
@@ -78,7 +221,35 @@ function GameTableMap() {
 
 export default GameTableMap;
 
-
+{/* <tr>
+<th className="cell"
+    draggable = {false}
+    onDragStart = {(e) => dragStartHeandler(e, this)}
+    onDragLeave = {(e) => dragLeaveHeandler(e)}
+    onDragEnd = {(e) => dragEndHeandler(e)}
+    onDragOver = {(e) => dragOverHeandler(e)}
+    onDrop = {(e) => DropHeandler(e, this)}>
+    asd
+</th>
+<th className="cell"
+draggable = {false}
+onDragStart = {(e) => dragStartHeandler(e, this)}
+onDragLeave = {(e) => dragLeaveHeandler(e)}
+onDragEnd = {(e) => dragEndHeandler(e)}
+onDragOver = {(e) => dragOverHeandler(e)}
+onDrop = {(e) => DropHeandler(e, this)}>asd</th>
+<th className="cell">asd</th>
+</tr>
+<tr>
+<th className="cell">dsa</th>
+<th className="cell">dsa</th>
+<th className="cell">dsa</th>
+</tr>
+<tr>
+<th className="cell">qwe</th>
+<th className="cell">qwe</th>
+<th className="cell">qwe</th>
+</tr> */}
 // const[cardList, setCardList] = useState([
 //     {id:1, order:3, text: 'КАРТОЧКА 3'},
 //     {id:2, order:4, text: 'КАРТОЧКА 4'},

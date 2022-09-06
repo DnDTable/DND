@@ -29,7 +29,7 @@ function App() {
     }
 
     function dragStartHeandler (e, card){
-        console.log('drag', card)
+        // console.log('drag', card)
         setCurrentPlayersCard(card)
     }
 
@@ -53,7 +53,7 @@ function App() {
     function DropHeandler(e, card){
         e.preventDefault()
         console.log('drop')
-        console.log('drop is', card)
+        console.log('drop iss', card)
         console.log('drop to', e)
 
         // setPlayersCards(playerCards.map(c => {

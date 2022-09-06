@@ -3,6 +3,9 @@ html {
     height: 100%;
 }
 body {
+    
+    min-width: 1350;
+    min-height: 728;
     margin: 0;
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
         'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
@@ -63,8 +66,10 @@ code {
     background-size: 200px 200px;
 }
 .side_panel p{
-    background-color: #3f2e2e88;
+    background-color: #281a1a88;
+    /* background-color: #fff; */
     color: white;
+    margin-left: -17px;
 }
 .side_panel::-webkit-scrollbar {
     background-color: #00000057;
@@ -135,7 +140,7 @@ code {
 .player_card p{
     text-align: center;
     margin: 0;
-    height: 100%;
+    /* height: 100%; */
 }
 
 
@@ -144,6 +149,8 @@ code {
     width: calc(100% - 350px);
     height: calc(100% - 20px);
     margin: 10px 0 10px 10px;
+    min-width: 1000;
+    min-height: 700;
     /* background-color: darkgrey; */
 }
 
