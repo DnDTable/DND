@@ -3,4 +3,3 @@ staticfiles-cdn/
 __pycache__/
 venv/
 .idea/
-node_modules/

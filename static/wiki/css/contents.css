@@ -1,5 +1,4 @@
 body {
-    /*тут всё верно, имей в виду файла 1.png нет, это bg_manual.png*/
     font-family: segoe print;
     width: 100%;
     height: 100%;
@@ -41,8 +40,9 @@ select {
 }
 
 .button1 {
-    width: 100%;
-    min-height: 60px;
+    width: 250px;
+    max-width: 100%;
+    height: 60px;
     background-image: url(pictures/2.png);
     background-position: center;
     background-size: cover;
@@ -60,7 +60,8 @@ select {
 /*Справочник*/
 
 .buttons_assist {
-    width: 100%;
+    width: 250px;
+    max-width: 100%;
     height: 330px;
     background-image: url(pictures/3.png);
     background-position: center;
@@ -82,10 +83,10 @@ select {
     justify-content: space-between;
 }
 
-.button2 {
+.button {
     margin-left: 10px;
     margin-top: 10px;
-    width: 50%;
+    width: 80%;
     height: 30px;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -94,88 +95,12 @@ select {
     outline: none;
 }
 
-.button2:hover {
+.button:hover {
     transition: 0.3s;
     opacity: 0.8;
     padding: 5px;
     box-shadow: 0 0 5px 5px;
     margin-top: 10px;
-    margin-left: 20px;
-}
-
-.button3 {
-    margin-left: 10px;
-    width: 70%;
-    height: 30px;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -ms-appearance: none;
-    cursor: pointer;
-    outline: none;
-}
-
-.button3:hover {
-    transition: 0.3s;
-    opacity: 0.8;
-    padding: 5px;
-    box-shadow: 0 0 5px 5px;
-    margin-left: 20px;
-}
-
-.button4 {
-    margin-left: 10px;
-    width: 85%;
-    height: 30px;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -ms-appearance: none;
-    cursor: pointer;
-    outline: none;
-}
-
-.button4:hover {
-    transition: 0.3s;
-    opacity: 0.8;
-    padding: 5px;
-    box-shadow: 0 0 5px 5px;
-    margin-left: 20px;
-}
-
-.button5 {
-    margin-left: 10px;
-    width: 85%;
-    height: 35px;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -ms-appearance: none;
-    cursor: pointer;
-    outline: none;
-}
-
-.button5:hover {
-    transition: 0.3s;
-    opacity: 0.8;
-    padding: 5px;
-    box-shadow: 0 0 5px 5px;
-    margin-left: 20px;
-}
-
-.button6 {
-    margin-left: 10px;
-    width: 85%;
-    height: 30px;
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -ms-appearance: none;
-    cursor: pointer;
-    outline: none;
-}
-
-.button6:hover {
-    transition: 0.3s;
-    opacity: 0.8;
-    padding: 5px;
-    box-shadow: 0 0 5px 5px;
     margin-left: 20px;
 }
 
@@ -188,15 +113,18 @@ select {
     background-image: url(pictures/bg_manual.png);
     background-position: center;
     background-size: cover;
-    display: flex;
-    justify-content: space-between;
-    flex-direction: column;
     padding: 15px;
     border-radius: 10px 10px 10px 10px;
     border: 5px solid black;
 }
 
-.text_1 {
+.text_field_con {
+    display: flex;
+    justify-content: space-between;
+    flex-direction: column;
+}
+
+.text_block {
     width: 100%;
     min-height: 50px;
     background-position: center;
@@ -216,58 +144,12 @@ select {
     border: 2px solid black;
 }
 
-.text_1text {
+.text {
     width: 75%;
     min-height: 10px;
     padding: 3px;
 }
 
-.text_2text {
-    width: 75%;
-    min-height: 10px;
-    padding: 3px;
-}
-
-.text_3text {
-    width: 75%;
-    min-height: 10px;
-    padding: 3px;
-}
-
-.text_4text {
-    width: 75%;
-    min-height: 10px;
-    padding: 3px;
-}
-
-.text_5text {
-    width: 75%;
-    min-height: 10px;
-    padding: 3px;
-}
-
-.text_6text {
-    width: 75%;
-    min-height: 10px;
-    padding: 3px;
-}
-
-.text_7text {
-    width: 75%;
-    min-height: 10px;
-    padding: 3px;
-}
-
-.text_2 {
-    width: 100%;
-    min-height: 50px;
-    background-position: center;
-    background-size: cover;
-    display: flex;
-    flex-direction: row;
-    padding: 1px;
-    border: 2px solid black;
-}
 
 .text_2foto {
     width: 100px;
