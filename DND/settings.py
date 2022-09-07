@@ -27,6 +27,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     # My apps
+    'channels',
     'users',
     'board',
     'wiki',
@@ -38,6 +39,14 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
 ]
+
+ASGI_APPLICATION = 'DND.asgi.application'
+
+CHANNEL_LAYERS = {
+    'default':{
+        'BACKEND':'channels.layers.InMemoryChannelLayer'
+    }
+}
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
