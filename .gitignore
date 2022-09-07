@@ -2,10 +2,12 @@
 
 /nginx-1.22.0
 # dependencies
-/node_modules
-/.pnp
-.pnp.js
-
+/node_modules/
+*.pyc
+/*/*.pyc
+/*/*/*.pyc
+/*/*/*/*.pyc
+/*/*/*/*/*.pyc
 # testing
 /coverage
 
