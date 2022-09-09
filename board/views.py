@@ -5,8 +5,4 @@ from django.http import Http404
 
 def index(request):
     """Home page"""
-    return render(request, 'main.html')
-
-def chat(request):
-    """Main page"""
     return render(request, 'board/index.html')

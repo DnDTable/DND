@@ -43,8 +43,8 @@ INSTALLED_APPS = [
 ASGI_APPLICATION = 'DND.asgi.application'
 
 CHANNEL_LAYERS = {
-    'default':{
-        'BACKEND':'channels.layers.InMemoryChannelLayer'
+    'default': {
+        'BACKEND': 'channels.layers.InMemoryChannelLayer'
     }
 }
 
