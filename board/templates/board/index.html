@@ -4,18 +4,128 @@
     <meta charset="UTF-8">
     <title>Title</title>
 </head>
-<body>
-    <h1>base lvl</h1>
+<body style="background-color: rgb(38, 45, 65);">
+    <h1 style="color: white;">base lvl</h1>
+    <div style="width: 590px; margin: 0 auto; min-height: 300px;">
+        <div id="messageConteiner" style="width: 100%; padding: 0 5px; height: 300px; overflow: auto; border: 1px solid black; border-radius: 10px; background-color: black;">
 
-    <script type="text/javascript">
-        let url = `ws://${window.location.host}/ws/socket-server/`
+        </div>
+        <div style="width: 600px; margin-top: 10px;">
+            <input type="text" name="sd" id="messageBox" style="width: 500px; height: 20px; border-radius: 5px; padding: 0 5px;"> 
+            <button style="float: right; width: 80px; height: 25px; border-radius: 5px;" onclick="SendMessage()">click me</button>
+        </div>
+        <input type="hidden" name="var" id='asd' value="0">
+    </div>
+    
 
-        const chatSocket = new WebSocket(url)
+    <script type="text/javascript"> //${window.location.host}
+        // var socketChat;
+        let url = `ws://127.0.0.1:8000/ws/socket-server/`
 
-        chatSocket.onmessage = function(e){
-            let data = JSON.parse(e.data)
-            console.log('DATA:', data)
+        const socket = new WebSocket(url);
+
+        function onPageLoad(){
+            addToConsole('Click button to start', 'sys')
+            // socketChat = new WebSocket(url)
         }
+        document.addEventListener("DOMContentLoaded", onPageLoad);
+
+        // Connection opened
+        socket.addEventListener('open', (event) => {
+            socket.send('Hello Server!');
+        });
+
+        // Listen for messages
+        socket.addEventListener('message', (event) => {
+            try {
+                var _message = event.data
+                if(_message['type'] == 'message')
+                    addToConsole('Ответ сервера:<br>' + _message, 'message')
+
+                else if(_message['type'] == 'answer')
+                    addToConsole('Ответ сервера:<br>' + _message, 'sys')
+
+                else addToConsole('Ответ сервера:<br>' + _message, 'server')
+            
+            } catch (error) {
+                addToConsole('Ответ сервера: <br>' + event.data, 'error')
+            }
+        });
+
+        socket.onclose = function(event) {
+            if (event.wasClean) {
+                addToConsole(`Соединение закрыто чисто, код=${event.code} причина=${event.reason}`, 'close');
+            } else {
+                // например, сервер убил процесс или сеть недоступна
+                // обычно в этом случае event.code 1006
+                addToConsole('Соединение прервано', 'close');
+            }
+        };
+
+        socket.onerror = function(error) {
+            addToConsole(`${error.message}`, 'error');
+        };
+
+        function addToConsole(message = 'Пришло пустое сообщение', type = 'error'){
+            var message_color = 'green';
+            let el = document.getElementById("messageConteiner");
+
+            if (type == 'sys') message_color = "yellow"
+            else if (type == 'error') message_color = "red"
+            else if (type == 'close') message_color = "red"
+
+            typeSelector = `<type style="color: ${message_color};">[` + type + ']</type> ';
+            el.insertAdjacentHTML('afterbegin', `<p style="color: white;">${typeSelector} ${message}</p>`);
+        }
+
+
+        function SendMessage (){
+            let _message = document.getElementById('messageBox')
+            if(_message.value.indexOf('answer') != -1)
+                socket.send(JSON.stringify({"type":"answer"}));
+            else if(_message.value.length < 1)
+                _message.value = "Отправка пустого сообщения"
+            socket.send(JSON.stringify({"type":"message", "message": _message.value}));
+            _message.value = ""      
+        }
+
+        
     </script>
 </body>
 </html>
+
+<script>
+            
+    // const chatSocket = new WebSocket(url)
+
+    // socketChat.onmessage = function(e){
+    //     let data = JSON.parse(e.data)
+    //     console.log('DATA:', data)
+    // }
+    
+    // socketChat = new WebSocket(url)
+    // console.log(socketChat)
+    // socketChat.onopen = function(e) {
+    //     addToConsole("Соединение установлено", 'open');
+    //     addToConsole("Отправляем данные на сервер");
+    //     socketChat.send("Меня зовут Джон");
+    // };
+
+    // socketChat.onmessage = function(event) {
+    //     addToConsole(`Данные получены с сервера:<br> ${event.data}`, 'message');
+    // };
+
+    // socketChat.onclose = function(event) {
+    // if (event.wasClean) {
+    //     addToConsole(`Соединение закрыто чисто, код=${event.code} причина=${event.reason}`, 'close');
+    // } else {
+    //     // например, сервер убил процесс или сеть недоступна
+    //     // обычно в этом случае event.code 1006
+    //     addToConsole('Соединение прервано', 'close');
+    // }
+    // };
+
+    // socketChat.onerror = function(error) {
+    //     addToConsole(`${error.message}`, 'error');
+    // };
+</script>

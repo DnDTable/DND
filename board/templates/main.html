@@ -17,8 +17,8 @@
     </div>
 
     <div class="body">
-        <input type="button" src="css/pictures/l.jpg" alt="submit" name="logb" class="loginb" onclick="location.href='/register'"></input>
-        <input type="button" src="css/pictures/r.jpg" alt="submit" name="regb" class="registerb" onclick="location.href='/login'"></input>
+        <input type="button" src="css/pictures/l.jpg" alt="submit" name="logb" class="loginb" onclick="location.href='{% url "users:login" %}'"></input>
+        <input type="button" src="css/pictures/r.jpg" alt="submit" name="regb" class="registerb" onclick="location.href='{% url "users:register" %}'"></input>
     </div>
 
 
