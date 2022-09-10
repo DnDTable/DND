@@ -57,6 +57,18 @@
             border-radius: 5px;
             font-family: 'Ubuntu Bold Italic', arial;
         }
+        .message_сonteiner::-webkit-scrollbar {
+            width: 12px;               /* ширина scrollbar */
+        }
+        .message_сonteiner::-webkit-scrollbar-track {
+            background: black;        /* цвет дорожки */
+            border-radius: 10px; 
+        }
+        .message_сonteiner::-webkit-scrollbar-thumb {
+            background-color: rgb(200, 200, 200);    /* цвет плашки */
+            border-radius: 20px;       /* закругления плашки */
+            border: 3px solid black;  /* padding вокруг плашки */
+        }
     </style>
     <head>
         <link rel="icon" href="/static/wiki/images/favicon.ico" type="image/x-icon">
@@ -84,6 +96,8 @@
 
             function onPageLoad(){
                 // addToConsole('Введите имя в поле сверху', 'sys')
+                // addToConsole('Введите имя в поле сверху', 'sys')
+                // addToConsole('Введите имя в поле сверху', 'sys')
                 // socketChat = new WebSocket(url)
             }
             document.addEventListener("DOMContentLoaded", onPageLoad);
@@ -104,7 +118,11 @@
 
                     if(_type == 'message') addToConsole(_message, _user)
                     else if(_type == 'answer') addToConsole(_message, 'sys')
-                    else if(_type == 'connection_status') addToConsole(_message, 'sys')
+                    else if(_type == 'connection_status'){
+                        let _user_form = document.getElementById('userNameBox')
+                        _user_form.value = _user
+                        addToConsole(_message, 'sys')
+                    }
                     else addToConsole('Ответ сервера:<br>' + _message, type)
                 
                 } catch (error) {
@@ -134,7 +152,7 @@
                 else if (type == 'error') message_color = "red"
                 else if (type == 'close') message_color = "red"
 
-                typeSelector = `<type style="color: ${message_color};">[` + type + ']</type> ';
+                typeSelector = `<type style="color: ${message_color};">[` + type + ']</type>';
                 el.insertAdjacentHTML('afterbegin', `<p style="color: white;">${typeSelector} ${message}</p>`);
             }
 
@@ -144,7 +162,7 @@
                 if(_message.value.indexOf('answer') != -1)
                     SendMessage(type="answer");
                 else if(_message.value.length < 1)
-                    _message.value = "Отправка пустого сообщения"
+                    exit()
                 if (_user.value.length < 1) _user.value.length = "User"
                 SendMessage(_message.value, "message", _user.value);
                 _message.value = ""
