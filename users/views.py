@@ -18,11 +18,12 @@ def register(request):
             new_user = form.save()
             # Выполнение входа и перенаправление на домашнюю страницу
             login(request, new_user)
-            return redirect('board:index')
+            return redirect('wiki:content')
 
     # Вывести пустую или недействительную форму
     context = {'form': form}
     return render(request, 'registration/register.html', context)
 
-def login(request):
-    return render(request, 'registration/login.html')
+# def login(request):
+#
+#     return render(request, 'registration/login.html')
