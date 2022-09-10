@@ -1,0 +1,190 @@
+body {
+    font-family: segoe print;
+    width: 100%;
+    height: 100%;
+    text-align: left;
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    overflow-y: scroll;
+    overflow-x: hidden;
+    justify-content: flex-start;
+    flex-wrap: nowrap;
+    background: url(/static/wiki/images/BG.jpg);
+    background-size: cover;
+    background-attachment: fixed;
+}
+
+input,
+textarea,
+select {
+    -webkit-appearance: none;
+}
+
+.body {
+    width: 100%;
+    height: 100%;
+    margin-top: 5%;
+}
+
+
+/*Поле кнопки*/
+
+.left_field {
+    width: 250px;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+
+/*Справочник*/
+
+.buttons_assist {
+    width: 100%;
+    height: 330px;
+    background-image: url(/static/wiki/images/3.png);
+    background-position: center;
+    background-size: cover;
+    display: flex;
+    flex-direction: column;
+}
+
+.text_sprav {
+    width: 100%;
+    min-height: 50px;
+}
+
+.button_sprav {
+    width: 100%;
+    min-height: 240px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.button2 {
+    margin-left: 10px;
+    width: 50%;
+    height: 30px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.button2:hover {
+    transition: 0.3s;
+    opacity: 0.8;
+    padding: 5px;
+    box-shadow: 0 0 5px 5px;
+    margin-left: 20px;
+}
+
+.button3 {
+    margin-left: 10px;
+    margin-top: 10px;
+    width: 70%;
+    height: 30px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    cursor: pointer;
+    outline: none;
+    opacity: 0.8;
+    padding: 5px;
+    box-shadow: 0 0 5px 5px;
+    margin-top: 10px;
+    margin-left: 20px;
+}
+
+.button3:hover {
+    transition: 0.3s;
+    opacity: 0.8;
+    padding: 5px;
+    box-shadow: 0 0 5px 5px;
+    margin-left: 20px;
+}
+
+.button4 {
+    margin-left: 10px;
+    width: 85%;
+    height: 30px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.button4:hover {
+    transition: 0.3s;
+    opacity: 0.8;
+    padding: 5px;
+    box-shadow: 0 0 5px 5px;
+    margin-left: 20px;
+}
+
+.button5 {
+    margin-left: 10px;
+    width: 85%;
+    height: 35px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.button5:hover {
+    transition: 0.3s;
+    opacity: 0.8;
+    padding: 5px;
+    box-shadow: 0 0 5px 5px;
+    margin-left: 20px;
+}
+
+.button6 {
+    margin-left: 10px;
+    width: 85%;
+    height: 30px;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
+    cursor: pointer;
+    outline: none;
+}
+
+.button6:hover {
+    transition: 0.3s;
+    opacity: 0.8;
+    padding: 5px;
+    box-shadow: 0 0 5px 5px;
+    margin-left: 20px;
+}
+
+
+/* Поле текста*/
+
+.text_field {
+    width: 60%;
+    min-height: 500px;
+    background-image: url(/static/wiki/images/bg_manual.png);
+    background-position: center;
+    background-size: cover;
+    padding: 15px;
+    border-radius: 10px 10px 10px 10px;
+    border: 5px solid black;
+    margin-left: 15px;
+}
+
+
+/*Правое поле*/
+
+.right_field {
+    width: 18%;
+    height: 100%;
+}

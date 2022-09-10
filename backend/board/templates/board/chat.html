@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="ru">
+    <link href="https://allfont.ru/allfont.css?fonts=action-man-extended" rel="stylesheet" type="text/css" />
+    <link href="https://allfont.ru/allfont.css?fonts=ubuntu-bold-italic" rel="stylesheet" type="text/css" />
+    <link href="https://allfont.ru/allfont.css?fonts=brushtype-normal" rel="stylesheet" type="text/css" />
+    <style>
+        body{
+            background-color: rgb(38, 45, 65);
+        }
+        h1{
+            width: 100%;
+            color: white;
+            text-align: center;
+        }
+        .wrapper_message_conteiner{
+            width: 590px; 
+            margin: 0 auto; 
+            min-height: 300px;
+            /* font-size: larger; */
+            font-family: 'Ubuntu Bold Italic', arial;
+            /* font-family: 'Action Man Extended', arial; */
+            /* font-family: 'BrushType Normal', arial; */
+
+        }
+        .message_сonteiner{
+            width: 100%; 
+            padding: 0 5px; 
+            height: 300px; 
+            overflow: auto; 
+            border: 1px solid black; 
+            border-radius: 10px; 
+            background-color: black;
+        }        
+        .message_box_conteiner{
+            width: 600px; 
+            margin-top: 10px;
+        }
+        .messageBox{
+            width: 370px; 
+            height: 20px; 
+            border-radius: 5px; 
+            padding: 0 5px;
+        }
+        .userNameBox{
+            width: 95px; 
+            height: 20px; 
+            border-radius: 5px; 
+            padding: 0 5px;
+        }
+        input:focus{
+            outline:none;
+        }
+        button{
+            float: right; 
+            width: 100px; 
+            height: 25px; 
+            border-radius: 5px;
+            font-family: 'Ubuntu Bold Italic', arial;
+        }
+        .message_сonteiner::-webkit-scrollbar {
+            width: 12px;               /* ширина scrollbar */
+        }
+        .message_сonteiner::-webkit-scrollbar-track {
+            background: black;        /* цвет дорожки */
+            border-radius: 10px; 
+        }
+        .message_сonteiner::-webkit-scrollbar-thumb {
+            background-color: rgb(200, 200, 200);    /* цвет плашки */
+            border-radius: 20px;       /* закругления плашки */
+            border: 3px solid black;  /* padding вокруг плашки */
+        }
+    </style>
+    <head>
+        <link rel="icon" href="/static/wiki/images/favicon.ico" type="image/x-icon">
+        <meta charset="UTF-8">
+        <title>Title</title>
+    </head>
+    <body>
+        <h1>ChatMe</h1>
+        <div class="wrapper_message_conteiner">
+            <div class="message_сonteiner" id="messageConteiner"></div>
+            <div class="message_box_conteiner">
+                <input type="text" maxlength="10" placeholder="Введите имя" class="userNameBox" name="userNameBox" id="userNameBox" value=""/>
+                <input type="text" name="sd" class="messageBox" id="messageBox"> 
+                <button id="sendButton" onclick="SendMessageButton()">Отправить</button>
+            </div>
+            <input type="hidden" name="var" id='asd' value="0" />
+        </div>
+        
+
+        <script type="text/javascript"> //${window.location.host}
+            // var socketChat;
+            let url = `ws://26.54.193.191:8000/ws/socket-server/`
+
+            const socket = new WebSocket(url);
+
+            function onPageLoad(){
+                // addToConsole('Введите имя в поле сверху', 'sys')
+                // addToConsole('Введите имя в поле сверху', 'sys')
+                // addToConsole('Введите имя в поле сверху', 'sys')
+                // socketChat = new WebSocket(url)
+            }
+            document.addEventListener("DOMContentLoaded", onPageLoad);
+
+            // Connection opened
+            socket.addEventListener('open', (event) => {
+                SendMessage('Hello Server!', "answer");
+            });
+
+            // Listener получение сообщений и вывод в консоль
+            socket.addEventListener('message', (event) => {
+                try {
+                    var _data = JSON.parse(event.data)
+                    var _type = _data['type']
+                    var _user = _data['user']
+                    // addToConsole("type: " + _type + " || " + event.data, 'redgar')
+                    var _message = _data['message']
+
+                    if(_type == 'message') addToConsole(_message, _user)
+                    else if(_type == 'answer') addToConsole(_message, 'sys')
+                    else if(_type == 'connection_status'){
+                        let _user_form = document.getElementById('userNameBox')
+                        _user_form.value = _user
+                        addToConsole(_message, 'sys')
+                    }
+                    else addToConsole('Ответ сервера:<br>' + _message, type)
+                
+                } catch (error) {
+                    addToConsole('Ответ сервера: <br>' + event.data, 'error')
+                }
+            });
+
+            socket.onclose = function(event) {
+                if (event.wasClean) {
+                    addToConsole(`Соединение закрыто чисто, код=${event.code} причина=${event.reason}`, 'close');
+                } else {
+                    // например, сервер убил процесс или сеть недоступна
+                    // обычно в этом случае event.code 1006
+                    addToConsole('Соединение прервано', 'close');
+                }
+            };
+
+            socket.onerror = function(error) {
+                addToConsole(`${error.message}`, 'error');
+            };
+
+            function addToConsole(message = 'Пришло пустое сообщение', type = 'error'){
+                var message_color = 'green';
+                let el = document.getElementById("messageConteiner");
+
+                if (type == 'sys') message_color = "yellow"
+                else if (type == 'error') message_color = "red"
+                else if (type == 'close') message_color = "red"
+
+                typeSelector = `<type style="color: ${message_color};">[` + type + ']</type>';
+                el.insertAdjacentHTML('afterbegin', `<p style="color: white;">${typeSelector} ${message}</p>`);
+            }
+
+            function SendMessageButton (){
+                let _message = document.getElementById('messageBox')
+                let _user = document.getElementById('userNameBox')
+                if(_message.value.indexOf('answer') != -1)
+                    SendMessage(type="answer");
+                else if(_message.value.length < 1)
+                    exit()
+                if (_user.value.length < 1) _user.value.length = "User"
+                SendMessage(_message.value, "message", _user.value);
+                _message.value = ""
+            }
+
+            function SendMessage (_message="", _type="message", _user="sys"){
+                // addToConsole(_message + " || " + _message.length, "sys")
+                socket.send(JSON.stringify({"type": _type, "message": _message, 'user': _user}))
+            }
+
+            document.getElementById("messageBox")
+            .addEventListener("keyup", function(event) {
+                event.preventDefault();
+                if (event.keyCode === 13) {
+                    document.getElementById("sendButton").click();
+                }
+            });
+            
+        </script>
+    </body>
+</html>
+
+<script>
+            
+    // const chatSocket = new WebSocket(url)
+
+    // socketChat.onmessage = function(e){
+    //     let data = JSON.parse(e.data)
+    //     console.log('DATA:', data)
+    // }
+    
+    // socketChat = new WebSocket(url)
+    // console.log(socketChat)
+    // socketChat.onopen = function(e) {
+    //     addToConsole("Соединение установлено", 'open');
+    //     addToConsole("Отправляем данные на сервер");
+    //     socketChat.send("Меня зовут Джон");
+    // };
+
+    // socketChat.onmessage = function(event) {
+    //     addToConsole(`Данные получены с сервера:<br> ${event.data}`, 'message');
+    // };
+
+    // socketChat.onclose = function(event) {
+    // if (event.wasClean) {
+    //     addToConsole(`Соединение закрыто чисто, код=${event.code} причина=${event.reason}`, 'close');
+    // } else {
+    //     // например, сервер убил процесс или сеть недоступна
+    //     // обычно в этом случае event.code 1006
+    //     addToConsole('Соединение прервано', 'close');
+    // }
+    // };
+
+    // socketChat.onerror = function(error) {
+    //     addToConsole(`${error.message}`, 'error');
+    // };
+</script>
