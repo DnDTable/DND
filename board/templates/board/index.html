@@ -12,7 +12,7 @@
         </div>
         <div style="width: 600px; margin-top: 10px;">
             <input type="text" name="sd" id="messageBox" style="width: 500px; height: 20px; border-radius: 5px; padding: 0 5px;"> 
-            <button style="float: right; width: 80px; height: 25px; border-radius: 5px;" onclick="SendMessage()">click me</button>
+            <button style="float: right; width: 80px; height: 25px; border-radius: 5px;" onclick="SendMessageButton()">click me</button>
         </div>
         <input type="hidden" name="var" id='asd' value="0">
     </div>
@@ -32,7 +32,7 @@
 
         // Connection opened
         socket.addEventListener('open', (event) => {
-            socket.send('Hello Server!');
+            SendMessage('Hello Server!');
         });
 
         // Listen for messages
@@ -78,15 +78,19 @@
             el.insertAdjacentHTML('afterbegin', `<p style="color: white;">${typeSelector} ${message}</p>`);
         }
 
-
-        function SendMessage (){
+        function SendMessageButton (){
             let _message = document.getElementById('messageBox')
             if(_message.value.indexOf('answer') != -1)
-                socket.send(JSON.stringify({"type":"answer"}));
+                SendMessage(type="answer");
             else if(_message.value.length < 1)
                 _message.value = "Отправка пустого сообщения"
-            socket.send(JSON.stringify({"type":"message", "message": _message.value}));
+            SendMessage(_message.value);
             _message.value = ""      
+        }
+
+        function SendMessage (_message, type="message"){
+            // addToConsole(_message + " || " + _message.length, "sys")
+            socket.send(JSON.stringify({"type":type, "message": _message}))
         }
 
         

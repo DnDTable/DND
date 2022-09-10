@@ -10,5 +10,5 @@ urlpatterns = [
     # Register page
     path('register/', views.register, name='register'),
     # Login page
-    path('login/', views.login, name='login'), # заглушка, не работает
+    path('login/', views.login, name='login'),
 ]

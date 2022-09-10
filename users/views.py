@@ -23,5 +23,6 @@ def register(request):
     # Вывести пустую или недействительную форму
     context = {'form': form}
     return render(request, 'registration/reglog.html', context)
+
 def login(request):
-    pass
+    return render(request, 'registration/login.html')
