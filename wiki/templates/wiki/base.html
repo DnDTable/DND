@@ -6,14 +6,14 @@
 
     <meta charset="UTF-8">
     <title>DnD-Главная</title>
-    <link rel="stylesheet" href="{% static 'users/css/main.css' %}">
+    <link rel="stylesheet" href="{% static 'wiki/css/contents.css' %}">
     <link rel="shortcut icon" href="favicon.ico" type="image/x-icon">
 
 </head>
 
 <body>
     <div class="left_field">
-        <input type="button" src="tmp/pictures/2.png" alt="submit" name="button_main" class="button1" onclick="location.href='./contents.html'">
+       <input type="button" src="/static/wiki/images/2.png" alt="submit" name="button_main" class="button1" onclick="location.href='{% url "wiki:contents" %}'">
         <div class="buttons_assist">
             <div class="text_sprav"></div>
             <div class="button_sprav">
