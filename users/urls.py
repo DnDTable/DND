@@ -1,14 +1,15 @@
 from django.urls import path, include
-
+from users.forms import UserLoginForm
 
 from . import views
 
 app_name = 'users'
 urlpatterns = [
-    # Main page that user sees when connects
-    path('', views.main, name='main'),
+    path('', include('django.contrib.auth.urls')),
+
+    # path('', views.main, name='main'),
     # Register page
     path('register/', views.register, name='register'),
     # Login page
-    path('login/', views.login, name='login'),
+    # path('login/', views.login, name='login'),
 ]
