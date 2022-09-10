@@ -21,8 +21,22 @@ class TableConsumer(WebsocketConsumer):
         }))
 
     def receive(self, text_data):
-        text_data_json = json.loads(text_data)
-        message = text_data_json['message']
+        try:
+            text_data_json = json.loads(text_data)
+            # if text_data_json['type'] == 'message':
+            #     self.send(text_data_json['message'])
+            # if text_data_json['type'] == 'answer':
+            #     self.send(str({'type':'answer', 'message': str(datetime.now())}))
+
+            message = text_data_json['message']
+
+            # self.send(type(text_data_json))
+        except:
+            # self.send(str(text_data))
+            message = text_data
+            # self.send("str: " + text_data)
+        # print('ssssssssssssssssssssssss------------------------------', text_data)
+        
 
         async_to_sync(self.channel_layer.group_send)(
             self.room_group_name,
@@ -36,6 +50,6 @@ class TableConsumer(WebsocketConsumer):
         message = event['message']
 
         self.send(text_data=json.dumps({
-            'type': 'action',
+            'type': 'message',
             'message': message
         }))
