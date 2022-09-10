@@ -16,8 +16,8 @@ class ChatConsumer(WebsocketConsumer):
         self.accept()
 
         self.send(text_data=json.dumps({
-            'type': 'connection_established',
-            'message': 'You are now connected'
+            'type': 'connection_status',
+            'message': 'Выподключены с серверу'
         }))
 
     def disconnect(self, close_code):
@@ -25,35 +25,50 @@ class ChatConsumer(WebsocketConsumer):
             self.room_group_name, self.channel_name
         )
 
+    def send_room(self, message, user):
+            async_to_sync(self.channel_layer.group_send)(
+                self.room_group_name,
+                {
+                    'type': 'room_event',
+                    'message': message,
+                    'user': user,
+                }
+            )
+    
+    def send_yourself(self, message, user):
+            self.send(text_data=json.dumps({
+                'type': 'message',
+                'message': message,
+                'user': user
+            }))
+
     def receive(self, text_data):
+        user = "user"
         try:
             text_data_json = json.loads(text_data)
-            # if text_data_json['type'] == 'message':
-            #     self.send(text_data_json['message'])
-            # if text_data_json['type'] == 'answer':
-            #     self.send(str({'type':'answer', 'message': str(datetime.now())}))
+            if text_data_json['type'] == 'message':
+                message = text_data_json['message']
+                user = text_data_json['user']
+                self.send_room(message, user)
+            elif text_data_json['type'] == 'answer':
+                message = str(datetime.now())
+                user = "server timer"
+                self.send_yourself(message, user)
+            else:
+                pass
+            
 
-            message = text_data_json['message']
-
-            # self.send(type(text_data_json))
         except:
-            # self.send(str(text_data))
             message = text_data
-            # self.send("str: " + text_data)
-        # print('ssssssssssssssssssssssss------------------------------', text_data)
 
-        async_to_sync(self.channel_layer.group_send)(
-            self.room_group_name,
-            {
-                'type': 'room_event',
-                'message': message,
-            }
-        )
+
 
     def room_event(self, event):
         message = event['message']
+        user = event['user']
 
         self.send(text_data=json.dumps({
             'type': 'message',
-            'message': message
+            'message': message,
+            'user': user
         }))
