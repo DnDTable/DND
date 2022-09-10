@@ -13,7 +13,7 @@ urlpatterns = [
     path('items/', views.items, name='items'),
     # Classes
     path('classes/', views.classes, name='classes'),
-    # Contents
-    path('content/', views.content, name='content')
+    # # Contents
+    path('', views.content, name='content')
 
 ]

@@ -22,7 +22,7 @@ def register(request):
 
     # Вывести пустую или недействительную форму
     context = {'form': form}
-    return render(request, 'registration/reglog.html', context)
+    return render(request, 'registration/register.html', context)
 
 def login(request):
     return render(request, 'registration/login.html')
