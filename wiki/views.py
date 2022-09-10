@@ -19,3 +19,7 @@ def items(request):
 
 def spells(request):
     return render(request, 'wiki/spells.html')
+
+
+def content(request):
+    return render(request, 'wiki/content.html')

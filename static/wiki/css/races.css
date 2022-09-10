@@ -11,7 +11,7 @@ body {
     overflow-x: hidden;
     justify-content: flex-start;
     flex-wrap: nowrap;
-    background: url(pictures/BG.jpg);
+    background: url(/static/wiki/images/BG.jpg);
     background-size: cover;
     background-attachment: fixed;
 }

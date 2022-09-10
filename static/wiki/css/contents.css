@@ -11,7 +11,7 @@ body {
     overflow-x: hidden;
     justify-content: flex-start;
     flex-wrap: nowrap;
-    background: url(pictures/BG.jpg);
+    background: url(/static/wiki/images/BG.jpg);
     background-size: cover;
     background-attachment: fixed;
 }
@@ -43,7 +43,7 @@ select {
     width: 250px;
     max-width: 100%;
     height: 60px;
-    background-image: url(pictures/2.png);
+    background-image: url(/static/wiki/images/2.png);
     background-position: center;
     background-size: cover;
     display: flex;
@@ -63,7 +63,7 @@ select {
     width: 250px;
     max-width: 100%;
     height: 330px;
-    background-image: url(pictures/3.png);
+    background-image: url(/static/wiki/images/3.png);
     background-position: center;
     background-size: cover;
     display: flex;
@@ -110,7 +110,7 @@ select {
 .text_field {
     width: 62%;
     min-height: 500px;
-    background-image: url(pictures/bg_manual.png);
+    background-image: url(/static/wiki/images/bg_manual.png);
     background-position: center;
     background-size: cover;
     padding: 15px;
@@ -138,7 +138,7 @@ select {
 .text_1foto {
     width: 100px;
     min-height: 50px;
-    background-image: url(pictures/4.jpg);
+    background-image: url(/static/wiki/images/4.jpg);
     background-position: center;
     background-size: cover;
     border: 2px solid black;
@@ -154,7 +154,7 @@ select {
 .text_2foto {
     width: 100px;
     min-height: 50px;
-    background-image: url(pictures/4.jpg);
+    background-image: url(/static/wiki/images/4.jpg);
     background-position: center;
     background-size: cover;
     border: 2px solid black;
@@ -174,7 +174,7 @@ select {
 .text_3foto {
     width: 100px;
     min-height: 50px;
-    background-image: url(pictures/5.png);
+    background-image: url(/static/wiki/images/5.png);
     background-position: center;
     background-size: cover;
     border: 2px solid black;
@@ -194,7 +194,7 @@ select {
 .text_4foto {
     width: 100px;
     min-height: 50px;
-    background-image: url(pictures/5.png);
+    background-image: url(/static/wiki/images/5.png);
     background-position: center;
     background-size: cover;
     border: 2px solid black;
@@ -214,7 +214,7 @@ select {
 .text_5foto {
     width: 100px;
     min-height: 50px;
-    background-image: url(pictures/6.png);
+    background-image: url(/static/wiki/images/6.png);
     background-position: center;
     background-size: cover;
     border: 2px solid black;
@@ -234,7 +234,7 @@ select {
 .text_6foto {
     width: 100px;
     min-height: 50px;
-    background-image: url(pictures/5.png);
+    background-image: url(/static/wiki/images/5.png);
     background-position: center;
     background-size: cover;
     border: 2px solid black;
@@ -254,7 +254,7 @@ select {
 .text_7foto {
     width: 100px;
     min-height: 50px;
-    background-image: url(pictures/6.png);
+    background-image: url(/static/wiki/images/6.png);
     background-position: center;
     background-size: cover;
     border: 2px solid black;
