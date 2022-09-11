@@ -1,6 +1,30 @@
-<form method="post" action="{% url 'users:login' %}" class="form">
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Авторизация</title>
+  <link rel="stylesheet" href="{% static 'users/css/login.css' %}">
+  <link rel="shortcut icon" href="{% static 'users/images/favicon.ico' %}" type="image/x-icon">
+</head>
+
+<body>
+
+<div class="pic">
+    <form method="post" action="{% url 'users:login' %}" class="form">
         {% csrf_token %}
-        {{ form.as_p }}
-        <button name="submit" class="btn btn-primary">Log In</button>
-        <input type="hidden" name="next" value="{% url 'wiki:content' %}" />
-</form>
+        <div class="button">
+            <button name="submit" class="button1"></button>
+            <input type="hidden" name="next" value="{% url 'wiki:content' %}" />
+        </div>
+        <div class="text">
+            {{ form.username }}
+            {{ form.password }}
+        </div>
+    </form>
+</div>
+
+</body>
+</html>

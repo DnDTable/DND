@@ -1,29 +1,52 @@
 from django.shortcuts import render, redirect
-from django.contrib.auth import login
-from django.contrib.auth.forms import UserCreationForm
+from django.contrib.auth import login, authenticate
+from .forms import SignUpForm, LoginForm
+from django.contrib import messages
 
 
 def main(request):
     return render(request, 'registration/main.html')
+
 def register(request):
     """Регистрирует нового пользователя"""
-    if request.method != 'POST':
-        # Выводит пустую форму регистрации
-        form = UserCreationForm()
-    else:
-        # Обработка заполненной формы
-        form = UserCreationForm(data=request.POST)
+    msg = None
+    success = False
 
+    if request.method == "POST":
+        form = SignUpForm(request.POST)
         if form.is_valid():
-            new_user = form.save()
-            # Выполнение входа и перенаправление на домашнюю страницу
-            login(request, new_user)
-            return redirect('wiki:content')
+            form.save()
+            username = form.cleaned_data.get("username")
+            raw_password = form.cleaned_data.get("password1")
+            user = authenticate(username=username, password=raw_password)
+            return redirect("users:login")
+        else:
+            messages.error(request, 'Form is not valid.')
+    else:
+        form = SignUpForm()
 
-    # Вывести пустую или недействительную форму
-    context = {'form': form}
-    return render(request, 'registration/register.html', context)
+    return render(request, "registration/register.html", {"form": form, "msg": msg, "success": success})
 
-# def login(request):
-#
-#     return render(request, 'registration/login.html')
+
+def logon(request):
+    """Логин пользователя в систему"""
+    form = LoginForm(request.POST or None)
+    msg = None
+
+    if not request.user.is_authenticated:
+        if request.method == 'POST':
+
+            if form.is_valid():
+                user = authenticate(
+                    username=request.POST.get('username'),
+                    password=request.POST.get('password'))
+                if user:
+                    login(request, user)
+                    return redirect('board:index')
+                else:
+                    messages.error(request, 'Error validating form')
+
+        context = {'form': form, 'msg': msg}
+        return render(request, 'registration/login.html', context)
+    return redirect('board:index')
+

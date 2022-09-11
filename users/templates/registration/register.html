@@ -1,6 +1,33 @@
-<form method="post" action="{% url 'users:register' %}" class="form">
-        {% csrf_token %}
-        {{ form.as_p }}
-        <button name="submit" class="btn btn-primary">Register</button>
-        <input type="hidden" name="next" value="{% url 'users:login' %}" />
-</form>
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="ru" >
+
+<head>
+  <meta charset="UTF-8">
+  <title>Регистрация</title>
+  <link rel="stylesheet" href="{% static 'users/css/reglog.css' %}">
+  <link rel="shortcut icon" href="{% static 'users/images/favicon.ico' %}" type="image/x-icon">
+</head>
+
+<body>
+
+	<div class="pic">
+		<form method="post" action="{% url 'users:register' %}" class="form">
+            {% csrf_token %}
+            <div class="button">
+                <button name="submit" class="button1"></button>
+                <input type="hidden" name="next" value="{% url 'users:login' %}"/>
+            </div>
+            <div class="text">
+                {{ form.username }}
+                {{ form.email }}
+                {{ form.password1 }}
+                {{ form.password2 }}
+            </div>
+        </form>
+	</div>
+ 
+</body>
+
+</html>

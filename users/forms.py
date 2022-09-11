@@ -1,22 +1,39 @@
-from django.contrib.auth.forms import AuthenticationForm, UsernameField, UserCreationForm
-from django.contrib.auth.models import User
 from django import forms
+from django.contrib.auth.models import User
+from django.contrib.auth.forms import UserCreationForm
 
 
-class UserLoginForm(AuthenticationForm):
-    def __init__(self, *args, **kwargs):
-        super(UserLoginForm, self).__init__(*args, **kwargs)
+class SignUpForm(UserCreationForm):
+    username = forms.CharField(widget=forms.TextInput(
+        attrs={'placeholder': 'Username', 'class': 'form-control input_username'}),
+        error_messages={'required': 'The username field is required'})
 
-    username = UsernameField(widget=forms.TextInput(
-        attrs={'class': 'form-control', 'placeholder': 'username'}
-    ))
+    email = forms.EmailField(widget=forms.EmailInput(
+        attrs={'placeholder': 'Email', 'class': 'form-control email'}),
+        error_messages={'required': 'The email field is required'})
 
-    password = forms.CharField(widget=forms.PasswordInput(
-        attrs={'class': 'form-control', 'placeholder': 'password'}
-    ))
+    password1 = forms.CharField(widget=forms.PasswordInput(
+        attrs={'placeholder': 'Password', 'class': 'form-control input_password'}),
+        error_messages={'required': 'The password field is required'})
 
+    password2 = forms.CharField(widget=forms.PasswordInput(
+        attrs={'placeholder': 'Confirm Password', 'class': 'form-control password_confirm'}),
+        error_messages={'required': 'The confirm password field is required'})
 
-class UserRegisterForm(UserCreationForm):
     class Meta:
         model = User
-        fields = ['username', 'password1', 'password2', 'email']
+        fields = ('username', 'email', 'password1', 'password2')
+
+
+class LoginForm(forms.Form):
+    username = forms.CharField(widget=forms.TextInput(
+        attrs={'placeholder': 'Username', 'class': 'form-control input_username'}),
+        error_messages={'required': 'The username field is required'})
+
+    password = forms.CharField(widget=forms.PasswordInput(
+        attrs={'placeholder': 'Password', 'class': 'form-control input_password'}),
+        error_messages={'required': 'The password field is required'})
+
+    class Meta:
+        model = User
+        fields = ('username', 'password')

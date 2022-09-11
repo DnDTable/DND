@@ -152,7 +152,7 @@ select {
     box-shadow: inset 0px 0px 7px 7px;
 }
 
-.redo_password {
+.password_confirm {
     font-size: 30px;
     text-align: center;
     font-family: "HelveticaNeue-Light", "Helvetica Neue Light", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
@@ -170,6 +170,6 @@ select {
     box-shadow: inset 0px 0px 5px 5px;
 }
 
-.redo_password:hover {
+.password_confirm:hover {
     box-shadow: inset 0px 0px 7px 7px;
 }
