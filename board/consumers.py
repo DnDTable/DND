@@ -1,6 +1,7 @@
-import json
 from channels.generic.websocket import AsyncWebsocketConsumer
 from datetime import datetime
+from .models import Board
+import json
 import random
 
 nick_names = [
@@ -14,6 +15,19 @@ nick_names = [
     'Реджеп',
     'Ягода',
 ]
+
+test_user: dict = {
+    'player1': {
+        'username': 'Ivan',
+        'is_GM': False,
+
+    },
+
+    'player2': {
+        'username': 'Nikola',
+        'is_GM': True
+    }
+}
 
 
 class ChatConsumer(AsyncWebsocketConsumer):
@@ -45,6 +59,28 @@ class ChatConsumer(AsyncWebsocketConsumer):
             self.room_group_name, self.channel_name
         )
 
+    async def receive(self, text_data):
+        user = "user"
+        try:
+            text_data_json = json.loads(text_data)
+            if text_data_json['type'] == 'message':
+                message = text_data_json['message']
+                user = text_data_json['user']
+                await self.send_room(message, user)
+            elif text_data_json['type'] == 'answer':
+                message = str(datetime.now())
+                user = "server timer"
+                await self.send_yourself(message, user)
+            elif text_data_json['type'] == 'map':
+                user = text_data_json['user']
+                await self.send_is_admin(user)
+            else:
+                pass
+
+
+        except:
+            message = text_data
+
     async def send_room(self, message, user):
         await self.channel_layer.group_send(
             self.room_group_name,
@@ -62,25 +98,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
             'user': user
         }))
 
-    async def receive(self, text_data):
-        user = "user"
-        try:
-            text_data_json = json.loads(text_data)
-            if text_data_json['type'] == 'message':
-                message = text_data_json['message']
-                user = text_data_json['user']
-                await self.send_room(message, user)
-            elif text_data_json['type'] == 'answer':
-                message = str(datetime.now())
-                user = "server timer"
-                await self.send_yourself(message, user)
-            else:
-                pass
-
-
-        except:
-            message = text_data
-
     async def room_event(self, event):
         message = event['message']
         user = event['user']
@@ -89,4 +106,16 @@ class ChatConsumer(AsyncWebsocketConsumer):
             'type': 'message',
             'message': message,
             'user': user
+        }))
+
+    async def send_is_admin(self, user):
+        is_admin = None
+        if is_admin in test_user and test_user[user]['is_GM'] is True:
+            is_admin = True
+        else:
+            is_admin = True
+
+        await self.send(text_data=json.dumps({
+            'type': 'map',
+            'user': is_admin
         }))
