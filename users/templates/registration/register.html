@@ -11,7 +11,8 @@
 </head>
 
 <body>
-
+    <div class="button_nav_log" a href="{% url 'users:login' %}">
+    </div>
 	<div class="pic">
 		<form method="post" action="{% url 'users:register' %}" class="form">
             {% csrf_token %}
