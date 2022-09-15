@@ -32,8 +32,8 @@ select {
 }
 
 .pic {
-    width: 100%;
-    height: 100%;
+    width: 450px;
+    height: 700px;
     max-width: 450px;
     max-height: 700px;
     background-image: url(/static/users/images/11.png);

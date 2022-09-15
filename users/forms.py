@@ -9,15 +9,15 @@ class SignUpForm(UserCreationForm):
         error_messages={'required': 'The username field is required'})
 
     email = forms.EmailField(widget=forms.EmailInput(
-        attrs={'placeholder': 'Email', 'class': 'form-control email'}),
+        attrs={'placeholder': 'Email', 'class': 'form-control input_username'}),
         error_messages={'required': 'The email field is required'})
 
     password1 = forms.CharField(widget=forms.PasswordInput(
-        attrs={'placeholder': 'Password', 'class': 'form-control input_password'}),
+        attrs={'placeholder': 'Password', 'class': 'form-control input_username'}),
         error_messages={'required': 'The password field is required'})
 
     password2 = forms.CharField(widget=forms.PasswordInput(
-        attrs={'placeholder': 'Confirm Password', 'class': 'form-control password_confirm'}),
+        attrs={'placeholder': 'Confirm Password', 'class': 'form-control input_username'}),
         error_messages={'required': 'The confirm password field is required'})
 
     class Meta:
@@ -31,7 +31,7 @@ class LoginForm(forms.Form):
         error_messages={'required': 'The username field is required'})
 
     password = forms.CharField(widget=forms.PasswordInput(
-        attrs={'placeholder': 'Password', 'class': 'form-control input_password'}),
+        attrs={'placeholder': 'Password', 'class': 'form-control input_username'}),
         error_messages={'required': 'The password field is required'})
 
     class Meta:

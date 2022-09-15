@@ -4,30 +4,27 @@
 <html lang="ru" >
 
 <head>
-  <meta charset="UTF-8">
-  <title>Регистрация</title>
-  <link rel="stylesheet" href="{% static 'users/css/reglog.css' %}">
-  <link rel="shortcut icon" href="{% static 'users/images/favicon.ico' %}" type="image/x-icon">
+    <meta charset="UTF-8">
+    <title>Регистрация</title>
+    <link rel="stylesheet" href="{% static 'users/css/reglog.css' %}">
+    <link rel="shortcut icon" href="{% static 'users/images/favicon.ico' %}" type="image/x-icon">
 </head>
 
 <body>
-    <div class="button_nav_log" a href="{% url 'users:login' %}">
-    </div>
-	<div class="pic">
-		<form method="post" action="{% url 'users:register' %}" class="form">
-            {% csrf_token %}
-            <div class="button">
-                <button name="submit" class="button1"></button>
-                <input type="hidden" name="next" value="{% url 'users:login' %}"/>
-            </div>
-            <div class="text">
-                {{ form.username }}
-                {{ form.email }}
-                {{ form.password1 }}
-                {{ form.password2 }}
-            </div>
-        </form>
-	</div>
+   <a class="button_nav_log" href="{% url 'users:login' %}">Вход</a>
+    <form class="pic" method="post" action="{% url 'users:register' %}" class="form">
+        {% csrf_token %}
+        <div class="button">
+            <button name="submit" class="button1 reg_button"></button>
+            <input type="hidden" name="next" value="{% url 'users:login' %}"/>
+        </div>
+        <div class="text">
+            {{ form.username }}
+            {{ form.email }}
+            {{ form.password1 }}
+            {{ form.password2 }}
+        </div>
+    </form>
  
 </body>
 
