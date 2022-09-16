@@ -1,30 +1,16 @@
 body {
-    width: 100%;
-    height: 100%;
-    text-align: left;
-    text-decoration: none;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    overflow: hidden;
-    justify-content: space-between;
+    width: 100vw;
+    height: 100vh;
     background: url(/static/users/images/BG.jpg);
-    background-size: cover;
-    background-attachment: fixed;
+    margin: 0;
 }
 
 .button_nav_wiki {
     width: 250px;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
 }
 
 .button_nav_main {
     width: 250px;
     height: 100%;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-around;
 }

@@ -1,12 +1,15 @@
 body {
     width: 100vw;
     height: 100vh;
-    text-decoration: none;
     background: url(/static/users/images/BG.jpg);
     background-size: 100%;
     background-attachment: fixed;
     overflow: none;
     margin: 0;
+}
+* {
+    text-decoration: none;
+
 }
 
 input,
