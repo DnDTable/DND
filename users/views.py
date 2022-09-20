@@ -50,3 +50,5 @@ def logon(request):
         return render(request, 'registration/login.html', context)
     return redirect('board:index')
 
+def profile(request):
+    return render(request, 'registration/prfile.html')
