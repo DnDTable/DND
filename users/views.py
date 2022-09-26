@@ -5,12 +5,17 @@ from django.contrib import messages
 
 
 def main(request):
+    if request.user.is_authenticated:
+        return redirect('wiki:content')
     return render(request, 'registration/main.html')
 
 def register(request):
     """Регистрирует нового пользователя"""
     msg = None
     success = False
+
+    if request.user.is_authenticated:
+        return redirect('wiki:content')
 
     if request.method == "POST":
         form = SignUpForm(request.POST)
@@ -33,6 +38,9 @@ def logon(request):
     form = LoginForm(request.POST or None)
     msg = None
 
+    if request.user.is_authenticated:
+        return redirect('wiki:content')
+
     if not request.user.is_authenticated:
         if request.method == 'POST':
 
@@ -50,5 +58,6 @@ def logon(request):
         return render(request, 'registration/login.html', context)
     return redirect('board:index')
 
+
 def profile(request):
-    return render(request, 'registration/prfile.html')
+    return render(request, 'registration/profile.html')

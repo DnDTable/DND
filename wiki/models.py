@@ -1,7 +1,28 @@
 from django.db import models
+from django.contrib.auth.models import User
+
+topic_class_choices: list = [
+    ('race', 'Race'),
+    ('class', 'Class'),
+    ('items', 'Items'),
+    ('bestiary', 'Bestiary'),
+    ('spells', 'Spells'),
+]
+
+
+class Topic(models.Model):
+    """Основная модель с темами"""
+    title = models.CharField(max_length=200)
+    date_added = models.DateTimeField(auto_now_add=True)
+    subclass = models.CharField(max_length=8, choices=topic_class_choices)
+
+    def __str__(self):
+        return self.title
+
 
 class Bestiary(models.Model):
     """Бестиарий с существами и расами"""
+    topic = models.ForeignKey(Topic, on_delete=models.CASCADE)
     # Basic
     name = models.CharField(max_length=50)
     ideology = models.CharField(max_length=50)
