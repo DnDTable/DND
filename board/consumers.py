@@ -110,10 +110,10 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
     async def send_is_admin(self, user):
         is_admin = None
-        if is_admin in test_user and test_user[user]['is_GM'] is True:
+        if user in test_user and test_user[user]['is_GM'] is True:
             is_admin = True
         else:
-            is_admin = True
+            is_admin = False
 
         await self.send(text_data=json.dumps({
             'type': 'map',

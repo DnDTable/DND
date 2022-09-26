@@ -7,3 +7,7 @@ from django.http import Http404
 def index(request):
     """Home page"""
     return render(request, 'board/chat.html')
+
+@login_required()
+def table(request):
+    return render(request, 'board/server-client.html')

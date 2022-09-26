@@ -101,97 +101,97 @@
 
 
 <script type="text/javascript"> //${window.location.host}
-// var socketChat;
-let url = `ws://${window.location.host}/ws/socket-server/`
+    // var socketChat;
+    let url = `ws://${window.location.host}/ws/socket-server/`
 
-const socket = new WebSocket(url);
+    const socket = new WebSocket(url);
 
-function onPageLoad() {
-    // addToConsole('Введите имя в поле сверху', 'sys')
-    // addToConsole('Введите имя в поле сверху', 'sys')
-    // addToConsole('Введите имя в поле сверху', 'sys')
-    // socketChat = new WebSocket(url)
-}
-
-document.addEventListener("DOMContentLoaded", onPageLoad);
-
-// Connection opened
-socket.addEventListener('open', (event) => {
-    SendMessage('Hello Server!', "answer");
-});
-
-// Listener получение сообщений и вывод в консоль
-socket.addEventListener('message', (event) => {
-    try {
-        var _data = JSON.parse(event.data)
-        var _type = _data['type']
-        var _user = _data['user']
-        // addToConsole("type: " + _type + " || " + event.data, 'redgar')
-        var _message = _data['message']
-
-        if (_type == 'message') addToConsole(_message, _user)
-        else if (_type == 'answer') addToConsole(_message, 'sys')
-        else if (_type == 'connection_status') {
-            let _user_form = document.getElementById('userNameBox')
-            _user_form.value = _user
-            addToConsole(_message, 'sys')
-        } else addToConsole('Ответ сервера:<br>' + _message, type)
-
-    } catch (error) {
-        addToConsole('Ответ сервера: <br>' + event.data, 'error')
+    function onPageLoad() {
+        // addToConsole('Введите имя в поле сверху', 'sys')
+        // addToConsole('Введите имя в поле сверху', 'sys')
+        // addToConsole('Введите имя в поле сверху', 'sys')
+        // socketChat = new WebSocket(url)
     }
-});
 
-socket.onclose = function (event) {
-    if (event.wasClean) {
-        addToConsole(`Соединение закрыто чисто, код=${event.code} причина=${event.reason}`, 'close');
-    } else {
-        // например, сервер убил процесс или сеть недоступна
-        // обычно в этом случае event.code 1006
-        addToConsole('Соединение прервано', 'close');
+    document.addEventListener("DOMContentLoaded", onPageLoad);
+
+    // Connection opened
+    socket.addEventListener('open', (event) => {
+        SendMessage('Hello Server!', "answer");
+    });
+
+    // Listener получение сообщений и вывод в консоль
+    socket.addEventListener('message', (event) => {
+        try {
+            var _data = JSON.parse(event.data)
+            var _type = _data['type']
+            var _user = _data['user']
+            // addToConsole("type: " + _type + " || " + event.data, 'redgar')
+            var _message = _data['message']
+
+            if (_type == 'message') addToConsole(_message, _user)
+            else if (_type == 'answer') addToConsole(_message, 'sys')
+            else if (_type == 'connection_status') {
+                let _user_form = document.getElementById('userNameBox')
+                _user_form.value = _user
+                addToConsole(_message, 'sys')
+            } else addToConsole('Ответ сервера:<br>' + _message, type)
+
+        } catch (error) {
+            addToConsole('Ответ сервера: <br>' + event.data, 'error')
+        }
+    });
+
+    socket.onclose = function (event) {
+        if (event.wasClean) {
+            addToConsole(`Соединение закрыто чисто, код=${event.code} причина=${event.reason}`, 'close');
+        } else {
+            // например, сервер убил процесс или сеть недоступна
+            // обычно в этом случае event.code 1006
+            addToConsole('Соединение прервано', 'close');
+        }
+    };
+
+    socket.onerror = function (error) {
+        addToConsole(`${error.message}`, 'error');
+    };
+
+    function addToConsole(message = 'Пришло пустое сообщение', type = 'error') {
+        var message_color = 'green';
+        let el = document.getElementById("messageConteiner");
+
+        if (type == 'sys') message_color = "yellow"
+        else if (type == 'error') message_color = "red"
+        else if (type == 'close') message_color = "red"
+
+        typeSelector = `<type style="color: ${message_color};">[` + type + ']</type>';
+        el.insertAdjacentHTML('afterbegin', `<p style="color: white;">${typeSelector} ${message}</p>`);
     }
-};
 
-socket.onerror = function (error) {
-    addToConsole(`${error.message}`, 'error');
-};
+    function SendMessageButton() {
+        let _message = document.getElementById('messageBox')
+        let _user = document.getElementById('userNameBox')
+        if (_message.value.indexOf('answer') != -1)
+            SendMessage(type = "answer");
+        else if (_message.value.length < 1)
+            exit()
+        if (_user.value.length < 1) _user.value.length = "User"
+        SendMessage(_message.value, "message", _user.value);
+        _message.value = ""
+    }
 
-function addToConsole(message = 'Пришло пустое сообщение', type = 'error') {
-    var message_color = 'green';
-    let el = document.getElementById("messageConteiner");
+    function SendMessage(_message = "", _type = "message", _user = "sys") {
+        // addToConsole(_message + " || " + _message.length, "sys")
+        socket.send(JSON.stringify({"type": _type, "message": _message, 'user': _user}))
+    }
 
-    if (type == 'sys') message_color = "yellow"
-    else if (type == 'error') message_color = "red"
-    else if (type == 'close') message_color = "red"
-
-    typeSelector = `<type style="color: ${message_color};">[` + type + ']</type>';
-    el.insertAdjacentHTML('afterbegin', `<p style="color: white;">${typeSelector} ${message}</p>`);
-}
-
-function SendMessageButton() {
-    let _message = document.getElementById('messageBox')
-    let _user = document.getElementById('userNameBox')
-    if (_message.value.indexOf('answer') != -1)
-        SendMessage(type = "answer");
-    else if (_message.value.length < 1)
-        exit()
-    if (_user.value.length < 1) _user.value.length = "User"
-    SendMessage(_message.value, "message", _user.value);
-    _message.value = ""
-}
-
-function SendMessage(_message = "", _type = "message", _user = "sys") {
-    // addToConsole(_message + " || " + _message.length, "sys")
-    socket.send(JSON.stringify({"type": _type, "message": _message, 'user': _user}))
-}
-
-document.getElementById("messageBox")
-        .addEventListener("keyup", function (event) {
-            event.preventDefault();
-            if (event.keyCode === 13) {
-                document.getElementById("sendButton").click();
-            }
-        });
+    document.getElementById("messageBox")
+    .addEventListener("keyup", function (event) {
+        event.preventDefault();
+        if (event.keyCode === 13) {
+            document.getElementById("sendButton").click();
+        }
+    });
 
 </script>
 </body>

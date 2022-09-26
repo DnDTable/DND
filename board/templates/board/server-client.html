@@ -93,9 +93,15 @@
             float: left;
         }
 
-        .cell{
-            background-color: rgb(185, 163, 133);
+        .cell {
+            /* background-color: rgb(185, 163, 133); */
             border: 1px solid black;
+        }
+        .greencell {
+            background-color: green;
+        }
+        .redcell {
+            background-color: red;
         }
     </style>
 <head>
@@ -121,16 +127,94 @@
 
 <script type="text/javascript"> //${window.location.host}
     // var socketChat;
-    let url = `ws://26.218.167.59:8000/ws/socket-server/`
+    let url = `ws://${window.location.host}/ws/socket-server/`
     
     const socket = new WebSocket(url);
     
-    function onPageLoad() {
+    
+    let map = [
+        {'id':0, 'player':'none', 'data': 'rgb(185, 163, 133)'},
+        {'id':1, 'player':'none', 'data': 'rgb(185, 163, 133)'},
+        {'id':2, 'player':'none', 'data': 'rgb(185, 163, 133)'},
+        {'id':3, 'player':'none', 'data': 'rgb(185, 163, 133)'},
+        {'id':4, 'player':'none', 'data': 'rgb(185, 163, 133)'},
+        {'id':5, 'player':'none', 'data': 'red'},
+        {'id':6, 'player':'none', 'data': 'rgb(185, 163, 133)'},
+        {'id':7, 'player':'none', 'data': 'rgb(185, 163, 133)'},
+        {'id':8, 'player':'none', 'data': 'rgb(185, 163, 133)'},
+        {'id':9, 'player':'Laterner', 'data': 'red'},
+        {'id':10, 'player':'', 'data': 'rgb(185, 163, 133)'},
+        {'id':11, 'player':'', 'data': 'rgb(185, 163, 133)'},
+        {'id':12, 'player':'', 'data': 'rgb(185, 163, 133)'},
+        {'id':13, 'player':'', 'data': 'rgb(185, 163, 133)'},
+        {'id':14, 'player':'', 'data': 'rgb(185, 163, 133)'},
+        {'id':15, 'player':'', 'data': 'red'},
+        {'id':16, 'player':'', 'data': 'rgb(185, 163, 133)'},
+        {'id':17, 'player':'', 'data': 'rgb(185, 163, 133)'},
+        {'id':18, 'player':'', 'data': 'rgb(185, 163, 133)'},
+        {'id':19, 'player':'', 'data': 'rgb(185, 163, 133)'},
+        {'id':20, 'player':'', 'data': 'rgb(185, 163, 133)'},
+        {'id':0, 'data': 'rgb(185, 163, 133)'},
+        {'id':0, 'data': 'rgb(185, 163, 133)'},
+        {'id':0, 'data': 'rgb(185, 163, 133)'},
+        {'id':0, 'data': 'rgb(185, 163, 133)'},
+        {'id':0, 'data': 'rgb(185, 163, 133)'},
+        {'id':0, 'data': 'rgb(185, 163, 133)'},
+        {'id':0, 'data': 'rgb(185, 163, 133)'},
+        {'id':0, 'data': 'rgb(185, 163, 133)'},
+        {'id':0, 'data': 'rgb(185, 163, 133)'},
+        {'id':0, 'data': 'rgb(185, 163, 133)'},
+        {'id':0, 'data': 'rgb(185, 163, 133)'},
+        {'id':0, 'data': 'rgb(185, 163, 133)'},
+        {'id':0, 'data': 'rgb(185, 163, 133)'},
+        {'id':0, 'data': 'rgb(185, 163, 133)'},
+        {'id':0, 'data': 'rgb(185, 163, 133)'},
+    ]
+
+    
+    var oldTimer = new Date().getTime();  
+    var newTimer = 0;  
+    let timeCooldown = 100;
+    var first_element = null;
+    var second_element = null;
+
+    let currentPlayer = 'Laterner'
+
+    function onPageLoad() {      
         let table = document.getElementById('table');
         for (let i = 0; i < 36; i++){
-            table.insertAdjacentHTML('afterbegin', "<div class='cell'> </div>");
+            let element =  `<div id="${map[i].id}" class='cell' player='${map[i].player}' style="background-color: ${map[i].data}"><p style="color: white">${map[i].id}</p></div>`
+            document.addEventListener('click', e => {
+                newTimer = new Date().getTime()
+                if (newTimer - oldTimer > timeCooldown) {
+                    oldTimer = newTimer;
+                    // console.log(e.target.attributes.player)
+                    if(e.target.className  == 'cell'){
+                        console.log(e.target.attributes.player.value); 
+                        // console.log(currentPlayer); 
+                        if(first_element == null && e.target.attributes.player.value == currentPlayer){
+                            first_element = e.target
+                            // first_element.style.backgroundColor = 'gray'
+                        }
+                        else if (first_element != null){
+                            var _tmp_p = first_element.attributes.player.value
+                            var _tmp_c = first_element.style.backgroundColor
+                            second_element = e.target
+
+                            first_element.style.backgroundColor = second_element.style.backgroundColor
+                            first_element.attributes.player.value = ''
+
+                            second_element.style.backgroundColor = _tmp_c
+                            second_element.attributes.player.value = _tmp_p
+
+                            first_element = null
+                            // console.log(_tmp)
+                        }
+                    }
+                }
+            })
+            table.insertAdjacentHTML('beforeend', element)
         }
-        addToConsole('asd', 'asd');
     }    
     document.addEventListener("DOMContentLoaded", onPageLoad);
     
@@ -205,11 +289,11 @@
     }
     
     document.getElementById("messageBox")
-            .addEventListener("keyup", function (event) {
-                event.preventDefault();
-                if (event.keyCode === 13) {
-                    document.getElementById("sendButton").click();
-                }
-            });
+    .addEventListener("keyup", function (event) {
+        event.preventDefault();
+        if (event.keyCode === 13) {
+            document.getElementById("sendButton").click();
+        }
+    });
     
     </script>
