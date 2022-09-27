@@ -45,12 +45,12 @@ class ChatConsumer(AsyncWebsocketConsumer):
         await self.accept()
         user = self.usernames[random.randint(0, len(self.usernames) - 1)]
 
-        await self.send(text_data=json.dumps({
-            'type': 'connection_status',
-            'message': f'Выподключены с серверу. Ваш ник - {user}',
-            'user': user
-        }))
-        await self.send_room("Пользователь <b style='color: green;'>" + user + "</b> присоединился к чату", user)
+        # await self.send(text_data=json.dumps({
+        #     'type': 'connection_status',
+        #     'message': f'Выподключены с серверу. Ваш ник - {user}',
+        #     'user': user
+        # }))
+        await self.send_room('connection_status', "Пользователь <b style='color: green;'>" + user + "</b> присоединился к чату", user)
 
     async def disconnect(self, close_code):
         await self.channel_layer.group_discard(
