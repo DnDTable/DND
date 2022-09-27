@@ -131,44 +131,44 @@
     
     const socket = new WebSocket(url);
     
-    
+    let _color = 'rgb(185, 163, 133)'
     let map = [
-        {'id':0, 'player':'none', 'data': 'rgb(185, 163, 133)'},
-        {'id':1, 'player':'none', 'data': 'rgb(185, 163, 133)'},
-        {'id':2, 'player':'none', 'data': 'rgb(185, 163, 133)'},
-        {'id':3, 'player':'none', 'data': 'rgb(185, 163, 133)'},
-        {'id':4, 'player':'none', 'data': 'rgb(185, 163, 133)'},
-        {'id':5, 'player':'none', 'data': 'red'},
-        {'id':6, 'player':'none', 'data': 'rgb(185, 163, 133)'},
-        {'id':7, 'player':'none', 'data': 'rgb(185, 163, 133)'},
-        {'id':8, 'player':'none', 'data': 'rgb(185, 163, 133)'},
-        {'id':9, 'player':'Laterner', 'data': 'red'},
-        {'id':10, 'player':'', 'data': 'rgb(185, 163, 133)'},
-        {'id':11, 'player':'', 'data': 'rgb(185, 163, 133)'},
-        {'id':12, 'player':'', 'data': 'rgb(185, 163, 133)'},
-        {'id':13, 'player':'', 'data': 'rgb(185, 163, 133)'},
-        {'id':14, 'player':'', 'data': 'rgb(185, 163, 133)'},
-        {'id':15, 'player':'', 'data': 'red'},
-        {'id':16, 'player':'', 'data': 'rgb(185, 163, 133)'},
-        {'id':17, 'player':'', 'data': 'rgb(185, 163, 133)'},
-        {'id':18, 'player':'', 'data': 'rgb(185, 163, 133)'},
-        {'id':19, 'player':'', 'data': 'rgb(185, 163, 133)'},
-        {'id':20, 'player':'', 'data': 'rgb(185, 163, 133)'},
-        {'id':0, 'data': 'rgb(185, 163, 133)'},
-        {'id':0, 'data': 'rgb(185, 163, 133)'},
-        {'id':0, 'data': 'rgb(185, 163, 133)'},
-        {'id':0, 'data': 'rgb(185, 163, 133)'},
-        {'id':0, 'data': 'rgb(185, 163, 133)'},
-        {'id':0, 'data': 'rgb(185, 163, 133)'},
-        {'id':0, 'data': 'rgb(185, 163, 133)'},
-        {'id':0, 'data': 'rgb(185, 163, 133)'},
-        {'id':0, 'data': 'rgb(185, 163, 133)'},
-        {'id':0, 'data': 'rgb(185, 163, 133)'},
-        {'id':0, 'data': 'rgb(185, 163, 133)'},
-        {'id':0, 'data': 'rgb(185, 163, 133)'},
-        {'id':0, 'data': 'rgb(185, 163, 133)'},
-        {'id':0, 'data': 'rgb(185, 163, 133)'},
-        {'id':0, 'data': 'rgb(185, 163, 133)'},
+        {'id':0,  'player':'none', 'data': _color},
+        {'id':1,  'player':'none', 'data': _color},
+        {'id':2,  'player':'none', 'data': _color},
+        {'id':3,  'player':'none', 'data': _color},
+        {'id':4,  'player':'none', 'data': _color},
+        {'id':5,  'player':'none', 'data': _color},
+        {'id':6,  'player':'none', 'data': _color},
+        {'id':7,  'player':'none', 'data': _color},
+        {'id':8,  'player':'none', 'data': _color},
+        {'id':9,  'player':'Laterner', 'data': 'red'},
+        {'id':10, 'player':'', 'data': _color},
+        {'id':11, 'player':'', 'data': _color},
+        {'id':12, 'player':'', 'data': _color},
+        {'id':13, 'player':'', 'data': _color},
+        {'id':14, 'player':'', 'data': _color},
+        {'id':15, 'player':'', 'data': _color},
+        {'id':16, 'player':'', 'data': _color},
+        {'id':17, 'player':'', 'data': _color},
+        {'id':18, 'player':'', 'data': _color},
+        {'id':19, 'player':'', 'data': _color},
+        {'id':20, 'player':'', 'data': _color},
+        {'id':21, 'data': _color},
+        {'id':22, 'data': _color},
+        {'id':23, 'data': _color},
+        {'id':24, 'data': _color},
+        {'id':25, 'data': _color},
+        {'id':26, 'data': _color},
+        {'id':27, 'data': _color},
+        {'id':28, 'data': _color},
+        {'id':29, 'data': _color},
+        {'id':30, 'data': _color},
+        {'id':31, 'data': _color},
+        {'id':32, 'data': _color},
+        {'id':33, 'data': _color},
+        {'id':34, 'data': _color},
+        {'id':35, 'data': _color},
     ]
 
     
@@ -180,39 +180,55 @@
 
     let currentPlayer = 'Laterner'
 
+    function movePlayer(e) {
+        newTimer = new Date().getTime()
+        if (newTimer - oldTimer > timeCooldown) {
+            oldTimer = newTimer;
+            // console.log(e.target.attributes.player)
+            if(e.target.className  == 'cell'){
+                console.log(e.target.attributes.player.value); 
+                // console.log(currentPlayer); 
+                if(first_element == null && e.target.attributes.player.value == currentPlayer){
+                    first_element = e.target
+                    // first_element.style.backgroundColor = 'gray'
+                }
+                else if (first_element != null){
+                    var _tmp_p = first_element.attributes.player.value
+                    var _tmp_c = first_element.style.backgroundColor
+                    second_element = e.target
+
+                    first_element.style.backgroundColor = second_element.style.backgroundColor
+                    first_element.attributes.player.value = ''
+
+                    second_element.style.backgroundColor = _tmp_c
+                    second_element.attributes.player.value = _tmp_p
+
+                    SendMessage({'id_1': first_element.attributes.id.value, 'id_2': second_element.attributes.id.value}, 'move', currentPlayer)
+
+                    first_element = null
+                }
+            }
+        }
+    }
+    function movePlayerRecerve(_data){
+        message = _data.message
+        user = _data.user
+        console.log(message)
+
+        cell_1 = document.getElementById(message.id_1)
+        cell_2 = document.getElementById(message.id_2)
+
+        cell_1.style.backgroundColor = 'yellow'
+        cell_2.style.backgroundColor = 'green'
+
+        cell_1.attributes.player.value = 'none'
+        cell_2.attributes.player.value = user
+    } 
     function onPageLoad() {      
         let table = document.getElementById('table');
         for (let i = 0; i < 36; i++){
             let element =  `<div id="${map[i].id}" class='cell' player='${map[i].player}' style="background-color: ${map[i].data}"><p style="color: white">${map[i].id}</p></div>`
-            document.addEventListener('click', e => {
-                newTimer = new Date().getTime()
-                if (newTimer - oldTimer > timeCooldown) {
-                    oldTimer = newTimer;
-                    // console.log(e.target.attributes.player)
-                    if(e.target.className  == 'cell'){
-                        console.log(e.target.attributes.player.value); 
-                        // console.log(currentPlayer); 
-                        if(first_element == null && e.target.attributes.player.value == currentPlayer){
-                            first_element = e.target
-                            // first_element.style.backgroundColor = 'gray'
-                        }
-                        else if (first_element != null){
-                            var _tmp_p = first_element.attributes.player.value
-                            var _tmp_c = first_element.style.backgroundColor
-                            second_element = e.target
-
-                            first_element.style.backgroundColor = second_element.style.backgroundColor
-                            first_element.attributes.player.value = ''
-
-                            second_element.style.backgroundColor = _tmp_c
-                            second_element.attributes.player.value = _tmp_p
-
-                            first_element = null
-                            // console.log(_tmp)
-                        }
-                    }
-                }
-            })
+            document.addEventListener('click', e => { movePlayer(e) })
             table.insertAdjacentHTML('beforeend', element)
         }
     }    
@@ -234,14 +250,16 @@
     
             if (_type == 'message') addToConsole(_message, _user)
             else if (_type == 'answer') addToConsole(_message, 'sys')
+            else if (_type == 'move') movePlayerRecerve(_data)
             else if (_type == 'connection_status') {
                 let _user_form = document.getElementById('userNameBox')
                 _user_form.value = _user
                 addToConsole(_message, 'sys')
-            } else addToConsole('Ответ сервера:<br>' + _message, type)
+            } 
+            else addToConsole('Ответ сервера: ' + _message, _type)
     
         } catch (error) {
-            addToConsole('Ответ сервера: <br>' + event.data, 'error')
+            addToConsole(error + '<br><br>Ответ сервера: <br>' + event.data, 'error')
         }
     });
     
@@ -268,26 +286,26 @@
         else if (type == 'close') message_color = "red"
     
         typeSelector = `<type style="color: ${message_color};">[` + type + ']</type>';
-        el.insertAdjacentHTML('afterbegin', `<p style="color: white;">${typeSelector} ${message}</p>`);
+        el.insertAdjacentHTML('afterbegin', `<p style="color: white;">${typeSelector} ${message}</p>`)
     }
     
     function SendMessageButton() {
         let _message = document.getElementById('messageBox')
         let _user = document.getElementById('userNameBox')
         if (_message.value.indexOf('answer') != -1)
-            SendMessage(type = "answer");
+            SendMessage(type = 'answer')
         else if (_message.value.length < 1)
             exit()
-        if (_user.value.length < 1) _user.value.length = "User"
-        SendMessage(_message.value, "message", _user.value);
-        _message.value = ""
+        if (_user.value.length < 1) _user.value.length = 'User'
+        SendMessage(_message.value, 'message', _user.value);
+        _message.value = ''
     }
     
-    function SendMessage(_message = "", _type = "message", _user = "sys") {
+    function SendMessage(_message = '', _type = 'message', _user = "sys") {
         // addToConsole(_message + " || " + _message.length, "sys")
-        socket.send(JSON.stringify({"type": _type, "message": _message, 'user': _user}))
+        socket.send(JSON.stringify({"type": _type, 'message': _message, 'user': _user}))
     }
-    
+
     document.getElementById("messageBox")
     .addEventListener("keyup", function (event) {
         event.preventDefault();
@@ -295,5 +313,5 @@
             document.getElementById("sendButton").click();
         }
     });
-    
+
     </script>

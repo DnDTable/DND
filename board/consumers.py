@@ -20,11 +20,10 @@ test_user: dict = {
     'player1': {
         'username': 'Ivan',
         'is_GM': False,
-
     },
 
     'player2': {
-        'username': 'Nikola',
+        'username': 'Laterner',
         'is_GM': True
     }
 }
@@ -45,7 +44,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
         await self.accept()
         user = self.usernames[random.randint(0, len(self.usernames) - 1)]
-        # self.usernames.pop(self.usernames.index(user))
 
         await self.send(text_data=json.dumps({
             'type': 'connection_status',
@@ -60,40 +58,45 @@ class ChatConsumer(AsyncWebsocketConsumer):
         )
 
     async def receive(self, text_data):
-        user = "user"
+        user = 'User'
+        _type = 'message'
         try:
             text_data_json = json.loads(text_data)
-            if text_data_json['type'] == 'message':
+            _type = text_data_json['type']
+            if _type == 'message':
                 message = text_data_json['message']
                 user = text_data_json['user']
-                await self.send_room(message, user)
-            elif text_data_json['type'] == 'answer':
+                await self.send_room(_type, message, user)
+            elif _type == 'answer':
                 message = str(datetime.now())
                 user = "server timer"
-                await self.send_yourself(message, user)
-            elif text_data_json['type'] == 'map':
+                await self.send_yourself(_type, message, user)
+            elif _type == 'move':
+                message = text_data_json['message']
+                user = text_data_json['user']
+                await self.send_room(_type, message, user)
+            elif _type == 'map':
                 user = text_data_json['user']
                 await self.send_is_admin(user)
             else:
                 pass
-
-
         except:
             message = text_data
 
-    async def send_room(self, message, user):
+    async def send_room(self, _type='sys', message='null message', user='sys'):
         await self.channel_layer.group_send(
             self.room_group_name,
             {
                 'type': 'room_event',
+                '_type': _type,
                 'message': message,
                 'user': user,
             }
         )
 
-    async def send_yourself(self, message, user):
+    async def send_yourself(self, _type, message, user):
         await self.send(text_data=json.dumps({
-            'type': 'message',
+            'type': _type,
             'message': message,
             'user': user
         }))
@@ -101,9 +104,9 @@ class ChatConsumer(AsyncWebsocketConsumer):
     async def room_event(self, event):
         message = event['message']
         user = event['user']
-
+        _type = event['_type']
         await self.send(text_data=json.dumps({
-            'type': 'message',
+            'type': _type,
             'message': message,
             'user': user
         }))
