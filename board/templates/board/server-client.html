@@ -40,7 +40,7 @@
         }
     
         .messageBox {
-            width: 370px;
+            width: 485px;
             height: 20px;
             border-radius: 5px;
             padding: 0 5px;
@@ -115,8 +115,7 @@
     <div class="wrapper_message_conteiner">
         <div class="message_сonteiner" id="messageConteiner"></div>
         <div class="message_box_conteiner">
-            <input type="text" maxlength="10" placeholder="Введите имя" class="userNameBox" name="userNameBox"
-                    id="userNameBox" value=""/>
+            <input type="hidden" id="userNameBox" value="{{ user.username }}"/>
             <input type="text" name="sd" class="messageBox" id="messageBox">
             <button id="sendButton" onclick="SendMessageButton()">Отправить</button>
         </div>
@@ -127,10 +126,18 @@
 
 <script type="text/javascript"> //${window.location.host}
     // var socketChat;
-    let url = `ws://${window.location.host}/ws/socket-server/`
+    let room_name = 'lobby'
     
-    const socket = new WebSocket(url);
-    
+    let url = `ws://${window.location.host}/ws/socket-server/${room_name}`
+    addToConsole(url, 'sys')
+    // const socket = new WebSocket(url);
+    const socket = new WebSocket(
+            'ws://'
+            + window.location.host
+            + '/ws/socket-server/'
+            + 'roomName'
+            + '/'
+        );
     let _color = 'rgb(185, 163, 133)'
     let map = [
         {'id':0,  'player':'none', 'data': _color},
@@ -253,7 +260,7 @@
             else if (_type == 'move') movePlayerRecerve(_data)
             else if (_type == 'connection_status') {
                 let _user_form = document.getElementById('userNameBox')
-                _user_form.value = _user
+                // _user_form.value = _user
                 addToConsole(_message, 'server')
             } 
             else addToConsole('Ответ сервера: ' + _message, _type)
@@ -269,7 +276,7 @@
         } else {
             // например, сервер убил процесс или сеть недоступна
             // обычно в этом случае event.code 1006
-            addToConsole('Соединение прервано', 'close');
+            addToConsole('Соединение прервано', 'error');
         }
     };
     
