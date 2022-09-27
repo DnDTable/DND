@@ -5,12 +5,15 @@
 <head>
     <meta charset="UTF-8">
     <title>Профиль</title>
-    <link rel="stylesheet" href="{% static 'wiki/css/contents.css' %}">
+    <link rel="stylesheet" href="{% static 'users/css/profile.css' %}">
     <link rel="shortcut icon" href="/static/wiki/images/favicon.ico" type="image/x-icon">
 
 </head>
 
 <body>
-    <div class="button_nav_main" a href="{% url 'users:main' %}">Выход</div>
-    <div class="button_nav_wiki" a href="{% url 'wiki:races' %}">Справочник</div>
+    <div class="left_side">
+        <a class="button_nav_wiki" href="{% url 'wiki:races' %}">Справочник</a>
+        <a class="button_nav_main" href="{% url 'users:main' %}">Выход</a>
+    </div>
 </body>
+</html>
