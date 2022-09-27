@@ -2,6 +2,7 @@ body {
     font-family: segoe print;
     width: 100%;
     height: 100%;
+    min-width: 1000px;
     text-align: left;
     text-decoration: none;
     display: flex;
@@ -100,7 +101,7 @@ select {
 /* Поле текста*/
 
 .text_field {
-    width: 62%;
+    width: calc(100% - 580px);
     min-height: 500px;
     background-image: url(/static/wiki/images/bg_manual.png);
     background-position: center;
@@ -109,4 +110,13 @@ select {
     border-radius: 10px 10px 10px 10px;
     border: 5px solid black;
     margin-left: 15px;
+}
+
+.right_field {
+    width: 250px;
+    height: 400px;
+    background: red;
+    display: flex;
+    flex-direction: column;
+    margin-left: 10px;
 }
