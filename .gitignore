@@ -5,6 +5,7 @@ venv/
 .idea/
 node_modules/
 mydatabase
+/*/migrations
 
 /nginx-1.22.0
 # dependencies
