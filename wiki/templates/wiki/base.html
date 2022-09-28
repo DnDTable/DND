@@ -13,18 +13,29 @@
 
 <body>
     <div class="left_field">
-       <input type="image" src="/static/wiki/images/2.png" alt="submit" name="button_main" class="button_nav_content" onclick="location.href='{% url "wiki:content" %}'">
+       <!--<input type="image" src="/static/wiki/images/2.png" alt="submit" name="button_main" class="button_nav_content" onclick="location.href='{% url "wiki:content" %}'">-->
+       <a class="button_nav" href="{% url 'wiki:content' %}">Главная</a>
         <div class="buttons_assist">
             <div class="button_sprav">
-                <input type="image" src="/static/wiki/images/Rasy.png" alt="submit" name="button_class" class="button_nav" onclick="location.href='{% url "wiki:races" %}'">
+                <!--<input type="image" src="/static/wiki/images/Rasy.png" alt="submit" name="button_class" class="button_nav" onclick="location.href='{% url "wiki:races" %}'">
                 <input type="image" src="/static/wiki/images/Klassy.png" alt="submit" name="button_class" class="button_nav" onclick="location.href='{% url "wiki:classes" %}'">
                 <input type="image" src="/static/wiki/images/Predmety.png" alt="submit" name="button_class" class="button_nav" onclick="location.href='{% url "wiki:items" %}'">
                 <input type="image" src="/static/wiki/images/Bestriariy.png" alt="submit" name="button_class" class="button_nav" onclick="location.href='{% url "wiki:bestiary" %}'">
-                <input type="image" src="/static/wiki/images/Zaklinania.png" alt="submit" name="button_class" class="button_nav" onclick="location.href='{% url "wiki:spells" %}'">
+                <input type="image" src="/static/wiki/images/Zaklinania.png" alt="submit" name="button_class" class="button_nav" onclick="location.href='{% url "wiki:spells" %}'">-->
+                <a class="button_nav" href="{% url 'wiki:races' %}">Рассы</a>
+                <a class="button_nav" href="{% url 'wiki:classes' %}">Классы</a>
+                <a class="button_nav" href="{% url 'wiki:items' %}">Предметы</a>
+                <a class="button_nav" href="{% url 'wiki:bestiary' %}">Бестиарий</a>
+                <a class="button_nav" href="{% url 'wiki:spells' %}">Заклинания</a>
             </div>
         </div>
     </div>
     <div class="text_field_wrap"></div>{% block content %}{% endblock content %}
-    <div class="right_field"></div>
+<div class="right_field">
+    <div class="nickname">Gar-en</div>
+    <a class="button_nav_right" href="{% url 'users:profile' %}">Профиль</a>
+    <a class="button_nav_right" href="{% url 'wiki:races' %}">Справочник</a>
+    <a class="button_nav_right" href="{% url 'users:main' %}">Выход</a>
+</div>
 </body>
 </html>
