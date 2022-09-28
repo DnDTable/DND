@@ -8,7 +8,7 @@ class ChatConsumer(AsyncWebsocketConsumer):
     async def connect(self):
         self.room_name = 'lobby'#self.scope['url_route']['kwargs']['room_name']
         self.room_group_name = 'lobby' #'chat_%s' % self.room_name
-        self.user = str(User.username) 
+        self.user = 'user'
 
         print('User is: ', type(self.user))
         
@@ -17,15 +17,6 @@ class ChatConsumer(AsyncWebsocketConsumer):
             self.channel_name
         )
         await self.accept()
-        
-        # await self.send_to_room('lobby', _type='connection_status', message='User <b style="color: green;">' + self.user + '</b> connected', user=self.user)
-
-        # Send message to WebSocket
-        await self.send(text_data=json.dumps({
-            'type': 'connection_status',
-            'message': 'User <b style="color: green;">' + 'self.user' + '</b> connected',
-            'user': 'User',
-        }))
 
     async def disconnect(self, close_code):
         await self.channel_layer.group_discard(
@@ -45,9 +36,9 @@ class ChatConsumer(AsyncWebsocketConsumer):
     
     async def room_event(self, event):
         await self.send(text_data=json.dumps({
-            'type': str(event['_type']),
-            'message': str(event['message']),
-            'user': str(event['user']),
+            'type': event['_type'],
+            'message': event['message'],
+            'user': event['user'],
         }))
 
     async def receive(self, text_data=None, bytes_data=None):
@@ -67,6 +58,9 @@ class ChatConsumer(AsyncWebsocketConsumer):
                     await self.send(text_data=json.dumps({'type': self._type, 'message': self._message, 'user': self._user}))
                 case 'move':
                     await self.send_to_room(_type=self._type, message=self._message, user=self._user)
+                case 'connection':
+                    self._message = 'Пользователь <b style="color: green;">' + self._user + '</b> присоеденился'
+                    await self.send_to_room(_type='connection_status', message=self._message, user=self._user)
 
         except Exception as exception:
             await self.send(text_data=json.dumps({

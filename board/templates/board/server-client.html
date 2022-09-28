@@ -129,8 +129,7 @@
     let room_name = 'lobby'
     
     let url = `ws://${window.location.host}/ws/socket-server/${room_name}`
-    addToConsole(url, 'sys')
-    // const socket = new WebSocket(url);
+    
     const socket = new WebSocket(
             'ws://'
             + window.location.host
@@ -140,52 +139,52 @@
         );
     let _color = 'rgb(185, 163, 133)'
     let map = [
-        {'id':0,  'player':'none', 'data': _color},
-        {'id':1,  'player':'none', 'data': _color},
-        {'id':2,  'player':'none', 'data': _color},
-        {'id':3,  'player':'none', 'data': _color},
-        {'id':4,  'player':'none', 'data': _color},
-        {'id':5,  'player':'none', 'data': _color},
-        {'id':6,  'player':'none', 'data': _color},
-        {'id':7,  'player':'none', 'data': _color},
-        {'id':8,  'player':'none', 'data': _color},
-        {'id':9,  'player':'Laterner', 'data': 'red'},
+        {'id':0,  'player':'', 'data': _color},
+        {'id':1,  'player':'', 'data': _color},
+        {'id':2,  'player':'', 'data': _color},
+        {'id':3,  'player':'', 'data': _color},
+        {'id':4,  'player':'', 'data': _color},
+        {'id':5,  'player':'', 'data': _color},
+        {'id':6,  'player':'', 'data': _color},
+        {'id':7,  'player':'', 'data': _color},
+        {'id':8,  'player':'', 'data': _color},
+        {'id':9,  'player':'', 'data': _color},
         {'id':10, 'player':'', 'data': _color},
         {'id':11, 'player':'', 'data': _color},
         {'id':12, 'player':'', 'data': _color},
-        {'id':13, 'player':'', 'data': _color},
-        {'id':14, 'player':'', 'data': _color},
-        {'id':15, 'player':'', 'data': _color},
-        {'id':16, 'player':'', 'data': _color},
+        {'id':13, 'player':'Laterner', 'data': 'green'},
+        {'id':14, 'player':'Ksasagan', 'data': 'coral'},
+        {'id':15, 'player':'Nectorr', 'data': 'silver'},
+        {'id':16, 'player':'Kotedo', 'data': 'purpule'},
         {'id':17, 'player':'', 'data': _color},
         {'id':18, 'player':'', 'data': _color},
         {'id':19, 'player':'', 'data': _color},
         {'id':20, 'player':'', 'data': _color},
-        {'id':21, 'data': _color},
-        {'id':22, 'data': _color},
-        {'id':23, 'data': _color},
-        {'id':24, 'data': _color},
-        {'id':25, 'data': _color},
-        {'id':26, 'data': _color},
-        {'id':27, 'data': _color},
-        {'id':28, 'data': _color},
-        {'id':29, 'data': _color},
-        {'id':30, 'data': _color},
-        {'id':31, 'data': _color},
-        {'id':32, 'data': _color},
-        {'id':33, 'data': _color},
-        {'id':34, 'data': _color},
-        {'id':35, 'data': _color},
+        {'id':21, 'player':'', 'data': _color},
+        {'id':22, 'player':'', 'data': _color},
+        {'id':23, 'player':'', 'data': _color},
+        {'id':24, 'player':'', 'data': _color},
+        {'id':25, 'player':'', 'data': _color},
+        {'id':26, 'player':'', 'data': _color},
+        {'id':27, 'player':'', 'data': _color},
+        {'id':28, 'player':'', 'data': _color},
+        {'id':29, 'player':'', 'data': _color},
+        {'id':30, 'player':'', 'data': _color},
+        {'id':31, 'player':'', 'data': _color},
+        {'id':32, 'player':'', 'data': _color},
+        {'id':33, 'player':'', 'data': _color},
+        {'id':34, 'player':'', 'data': _color},
+        {'id':35, 'player':'', 'data': _color},
     ]
 
     
     var oldTimer = new Date().getTime();  
     var newTimer = 0;  
-    let timeCooldown = 100;
+    let timeCooldown = 50;
     var first_element = null;
     var second_element = null;
 
-    let currentPlayer = 'Laterner'
+    let currentPlayer = document.getElementById('userNameBox').value
 
     function movePlayer(e) {
         newTimer = new Date().getTime()
@@ -243,7 +242,7 @@
     
     // Connection opened
     socket.addEventListener('open', (event) => {
-        SendMessage('Hello Server!', "answer");
+        SendMessage('Hello Server!', "connection");
     });
     
     // Listener получение сообщений и вывод в консоль
@@ -308,9 +307,9 @@
         _message.value = ''
     }
     
-    function SendMessage(_message = '', _type = 'message', _user = "sys") {
+    function SendMessage(_message = '', _type = 'message', _user = currentPlayer) {
         // addToConsole(_message + " || " + _message.length, "sys")
-        socket.send(JSON.stringify({"type": _type, 'message': _message, 'user': _user}))
+        socket.send(JSON.stringify({"type": _type, 'message': _message, 'user': currentPlayer}))
     }
 
     document.getElementById("messageBox")
