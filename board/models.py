@@ -3,8 +3,14 @@ from django.contrib.auth.models import User
 from users.models import Player
 
 
+class Room(models.Model):
+    name = models.CharField(max_length=255)
+    slug = models.SlugField(unique=True)
+    date_created = models.DateTimeField(auto_now_add=True)
+
+
 class Board(models.Model):
-    board_name = models.CharField(max_length=100)
-    game_master = models.ForeignKey(Player, on_delete=models.CASCADE)
+    room = models.ForeignKey(Room, on_delete=models.CASCADE)
+    player = models.ForeignKey(Player, on_delete=models.CASCADE)
 
 

@@ -1,16 +1,13 @@
 from channels.generic.websocket import AsyncWebsocketConsumer
-from django.contrib.auth.models import User
 import json
 
 
 class ChatConsumer(AsyncWebsocketConsumer):
 
     async def connect(self):
-        self.room_name = 'lobby'#self.scope['url_route']['kwargs']['room_name']
-        self.room_group_name = 'lobby' #'chat_%s' % self.room_name
+        self.room_name = self.scope['url_route']['kwargs']['room_name']
+        self.room_group_name = f'room_{self.room_name}'
         self.user = 'user'
-
-        print('User is: ', type(self.user))
         
         await self.channel_layer.group_add(
             self.room_group_name,
@@ -23,9 +20,9 @@ class ChatConsumer(AsyncWebsocketConsumer):
             self.room_group_name, self.channel_name
         )
 
-    async def send_to_room(self, channel_name='lobby', _type='sys', message='null', user='sys'):
+    async def send_to_room(self, _type='sys', message='null', user='sys'):
         await self.channel_layer.group_send(
-            channel_name,
+            self.room_group_name,
             {
                 'type': 'room_event',
                 '_type': _type,
@@ -49,27 +46,19 @@ class ChatConsumer(AsyncWebsocketConsumer):
             self._message: str = text_data_json['message']
             self._user: str = text_data_json['user']
 
-            print('type:', f"'{self._type}'", 'message:', f"'{self._message}'", 'user:', f"'{self._user}'")
-
             match self._type:
                 case 'message':
                     await self.send_to_room(_type=self._type, message=self._message, user=self._user)
                 case 'answer':
-                    await self.send(text_data=json.dumps({'type': self._type, 'message': self._message, 'user': self._user}))
+                    await self.send(text_data=json.dumps(
+                        {'type': self._type, 'message': self._message, 'user': self._user}))
                 case 'move':
                     await self.send_to_room(_type=self._type, message=self._message, user=self._user)
                 case 'connection':
-                    self._message = 'Пользователь <b style="color: green;">' + self._user + '</b> присоеденился'
+                    self._message = 'Пользователь <b style="color: green;">' + self._user + '</b> присоединился'
                     await self.send_to_room(_type='connection_status', message=self._message, user=self._user)
 
         except Exception as exception:
             await self.send(text_data=json.dumps({
                 'error', exception
             }))
-
-
-
-
-
-
-    

@@ -2,11 +2,13 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate
 from .forms import SignUpForm, LoginForm
 from django.contrib import messages
+from django.contrib.auth.decorators import login_required
+from django.http import Http404
 
 
 def main(request):
     if request.user.is_authenticated:
-        return redirect('wiki:content')
+        return redirect('users:profile')
     return render(request, 'registration/main.html')
 
 def register(request):
@@ -15,7 +17,7 @@ def register(request):
     success = False
 
     if request.user.is_authenticated:
-        return redirect('wiki:content')
+        raise Http404
 
     if request.method == "POST":
         form = SignUpForm(request.POST)
@@ -39,7 +41,7 @@ def logon(request):
     msg = None
 
     if request.user.is_authenticated:
-        return redirect('wiki:content')
+        raise Http404
 
     if not request.user.is_authenticated:
         if request.method == 'POST':
@@ -50,14 +52,13 @@ def logon(request):
                     password=request.POST.get('password'))
                 if user:
                     login(request, user)
-                    return redirect('board:index')
+                    return redirect('board:table')
                 else:
                     messages.error(request, 'Error validating form')
 
         context = {'form': form, 'msg': msg}
         return render(request, 'registration/login.html', context)
-    return redirect('board:index')
 
-
+@login_required()
 def profile(request):
     return render(request, 'registration/profile.html')

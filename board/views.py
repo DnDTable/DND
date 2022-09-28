@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect, get_object_or_404
+from django.shortcuts import render
 from django.contrib.auth.decorators import login_required
 from django.http import Http404
 
@@ -9,5 +9,5 @@ def index(request):
     return render(request, 'board/chat.html')
 
 @login_required()
-def table(request, room_name):
-    return render(request, 'board/server-client.html', {'room_name': room_name})
+def table(request):
+    return render(request, 'board/server-client.html')
