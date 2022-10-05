@@ -52,7 +52,7 @@ def logon(request):
                     password=request.POST.get('password'))
                 if user:
                     login(request, user)
-                    return redirect('board:table')
+                    return redirect('users:profile')
                 else:
                     messages.error(request, 'Error validating form')
 

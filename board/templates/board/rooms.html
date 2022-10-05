@@ -63,31 +63,14 @@
 <body>
     <div class="conteiner_wrapper">
         <div class="conteiner">
+            {% for room in rooms %}
+
             <div class="card">
-                <p>Name</p>
+                <p>{{ room.name }}</p>
                 <div class="card_discription"></div>
                 <button class="card_button">Join room</button>
             </div>
-            <div class="card">
-                <p>Name</p>
-                <div class="card_discription"></div>
-                <button class="card_button">Join room</button>
-            </div>
-            <div class="card">
-                <p>Name</p>
-                <div class="card_discription"></div>
-                <button class="card_button">Join room</button>
-            </div>
-            <div class="card">
-                <p>Name</p>
-                <div class="card_discription"></div>
-                <button class="card_button">Join room</button>
-            </div>
-            <div class="card">
-                <p>Name</p>
-                <div class="card_discription"></div>
-                <button class="card_button">Join room</button>
-            </div>
+            {% endfor %}
         </div>
     </div>
 </body>

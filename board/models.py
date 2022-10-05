@@ -8,9 +8,15 @@ class Room(models.Model):
     slug = models.SlugField(unique=True)
     date_created = models.DateTimeField(auto_now_add=True)
 
+    def __str__(self):
+        return self.name
+
 
 class Board(models.Model):
     room = models.ForeignKey(Room, on_delete=models.CASCADE)
     player = models.ForeignKey(Player, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return self.room
 
 
