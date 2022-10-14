@@ -4,14 +4,23 @@ body {
     text-align: left;
     text-decoration: none;
     display: flex;
-    flex-direction: column;
+    flex-direction: row;
     align-items: left;
-    overflow: hidden;
+    overflow-y: scroll;
     align-content: flex-start;
     background: url(/static/users/images/BG.jpg);
     background-size: cover;
     background-attachment: fixed;
+    justify-content: space-between;
     margin: 0px;
+}
+
+input,
+textarea,
+select {
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    -ms-appearance: none;
 }
 
 .left_side {
@@ -31,4 +40,28 @@ body {
 .button_nav_main {
     width: 100px;
     height: 100%;
+}
+
+.character_list {
+    width: calc(100% - 250px);
+    min-height: 3600px;
+    flex-direction: column;
+}
+
+.character_page {
+    width: 900px;
+    height: 1180px;
+    display: flex;
+}
+
+.image {
+    width: 900px;
+    height: 1182px;
+    background-image: url(/static/users/images/character_page_1.png);
+    background-size: cover;
+}
+
+.text_name_or_clsp {
+    width: 100px;
+    height: 40px;
 }

@@ -131,8 +131,10 @@ select {
 }
 
 .button_nav_right {
-    width: 100%;
-    height: 100px;
+    margin-left: 27px;
+    margin-top: 10px;
+    width: 80%;
+    height: 70px;
     color: yellow;
     cursor: pointer;
 }
