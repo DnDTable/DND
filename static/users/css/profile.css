@@ -42,26 +42,57 @@ select {
     height: 100%;
 }
 
+/*Лист персонажа*/
+
 .character_list {
     width: calc(100% - 250px);
     min-height: 3600px;
     flex-direction: column;
 }
 
-.character_page {
-    width: 900px;
-    height: 1180px;
-    display: flex;
-}
-
 .image {
     width: 900px;
     height: 1182px;
-    background-image: url(/static/users/images/character_page_1.png);
     background-size: cover;
+    flex-direction: none;
 }
 
+.page_1 {
+    background-image: url(/static/users/images/character_page_1.png);
+}
+
+.page_2 {
+    background-image: url(/static/users/images/character_page_2.png);
+}
+
+
+.page_3 {
+    background-image: url(/static/users/images/character_page_3.png);
+}
+
+
 .text_name_or_clsp {
-    width: 100px;
-    height: 40px;
+    width: 240px;
+    height: 25px;
+    margin: 84px 0px 0px 60px;
+    border: none;
+}
+
+.main_info {
+    width: 450px;
+    height: 35px;
+    margin: -55px 0px 0px 390px;
+    /*align-items: stretch;*/
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.indent {
+    margin-top: 10px;
+}
+
+.text_main_info {
+    width: 120px;
+    height: 15px;
 }
