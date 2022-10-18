@@ -15,14 +15,6 @@ body {
     margin: 0px;
 }
 
-input,
-textarea,
-select {
-    -webkit-appearance: none;
-    -moz-appearance: none;
-    -ms-appearance: none;
-}
-
 .left_side {
     width: 100px;
     height: 100px;
@@ -146,17 +138,81 @@ select {
 }
 
 .checks {
-    width: 30px;
-    height: 100px;
-    background-color: red;
+    width: 20px;
+    height: 124px;
     align-items: center;
     display: flex;
     flex-direction: column;
-    margin: 15px 0px 0px 120px;
+    margin: 28px 0px 0px 135px;
 }
 
 .choose_check {
+    width: 12px;
+    height: 12px;
+    margin-top: 8.5px;
+}
+
+.checks_parm {
     width: 20px;
+    height: 100px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: -123px 0px 0px 160px;
+}
+
+.check_name {
+    width: 13px;
+    height: 10px;
+    margin-top: 4.5px;
+}
+
+.checks_skills {
+    width: 20px;
+    height: 372px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: 68px 0px 0px 135px;
+}
+
+.checks_skills_parm {
+    width: 20px;
+    height: 372px;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: -370px 0px 0px 158px;
+}
+
+.battle_parms {
+    width: 250px;
+    height: 60px;
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    margin: -570px 0px 0px 340px;
+}
+
+.btl_parm {
+    width: 35px;
+    height: 35px;
+    margin-left: 44px;
+}
+
+.indent_three {
+    margin-left: 0px;
+}
+
+.passive_at {
+    width: 22px;
     height: 20px;
+    margin: 628px 0px 0px 38px;
+}
+
+.hp_stats {
+    width: 40px;
+    height: 8px;
+    margin: 0px 0px 600px 300px;
 }
 /**/
