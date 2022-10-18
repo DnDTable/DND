@@ -186,12 +186,12 @@ body {
 }
 
 .battle_parms {
-    width: 250px;
+    width: 220px;
     height: 60px;
     align-items: center;
     display: flex;
     flex-direction: row;
-    margin: -570px 0px 0px 340px;
+    margin: -642px 0px 0px 340px;
 }
 
 .btl_parm {
@@ -210,9 +210,20 @@ body {
     margin: 628px 0px 0px 38px;
 }
 
+.hp_stats_h {
+    width: 80px;
+    height: 15px;
+    margin: -625px 0px 0px 400px;
+}
+
 .hp_stats {
-    width: 40px;
-    height: 8px;
-    margin: 0px 0px 600px 300px;
+    width: 75px;
+    height: 10px;
+}
+
+.temp_hp {
+    width: 80px;
+    height: 12px;
+    margin: 85px 0px 0px 400px;
 }
 /**/
