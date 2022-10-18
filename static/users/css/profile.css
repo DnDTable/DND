@@ -55,6 +55,7 @@ select {
     height: 1182px;
     background-size: cover;
     flex-direction: none;
+    margin-bottom: 10px;
 }
 
 .page_1 {
@@ -84,7 +85,7 @@ select {
     /*align-items: stretch;*/
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
+    justify-content: space-around;
 }
 
 .indent {
@@ -98,7 +99,7 @@ select {
 
 .container_char {
     width: 60px;
-    height: 700px;
+    height: 650px;
     align-items: center;
     display: flex;
     flex-direction: column;
@@ -126,4 +127,36 @@ select {
     margin-top: 10px;
 }
 
+
+.indent_two {
+    margin-top: 33px;
+    margin-left: 2px;
+}
+
+.insp_bonus_sk {
+    width: 30px;
+    height: 80px;
+    margin: -650px 0px 0px 133px;
+    align-items: center;
+}
+
+.text_insp_bonus_sk {
+    width: 26px;
+    height: 20px;
+}
+
+.checks {
+    width: 30px;
+    height: 100px;
+    background-color: red;
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    margin: 15px 0px 0px 120px;
+}
+
+.choose_check {
+    width: 20px;
+    height: 20px;
+}
 /**/
