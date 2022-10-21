@@ -1,6 +1,6 @@
 body {
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     text-align: left;
     text-decoration: none;
     display: flex;
@@ -47,7 +47,7 @@ body {
     height: 1182px;
     background-size: cover;
     flex-direction: none;
-    margin-bottom: 10px;
+    margin-bottom: 20px;
 }
 
 .page_1 {
@@ -72,7 +72,7 @@ body {
 
 .main_info {
     width: 450px;
-    height: 35px;
+    height: 20px;
     margin: -55px 0px 0px 390px;
     /*align-items: stretch;*/
     display: flex;
@@ -81,7 +81,7 @@ body {
 }
 
 .indent {
-    margin-top: 10px;
+    margin-top: 25px;
 }
 
 .text_main_info {
@@ -95,7 +95,7 @@ body {
     align-items: center;
     display: flex;
     flex-direction: column;
-    margin: 46px 0px 0px 45px;
+    margin: 61px 0px 0px 45px;
 }
 
 .characteristics {
@@ -217,7 +217,7 @@ body {
 }
 
 .hp_stats {
-    width: 75px;
+    width: 65px;
     height: 10px;
 }
 
@@ -225,5 +225,187 @@ body {
     width: 80px;
     height: 12px;
     margin: 85px 0px 0px 400px;
+}
+
+.hp_dice {
+    width: 80px;
+    height: 12px;
+    margin: 73px 0px 0px 360px;
+}
+
+.test_ag_death {
+    width: 60px;
+    height: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: -9px 0px 0px 510px;
+}
+
+.success_or_failure {
+    width: 16px;
+    height: 16px;
+    margin-left: 0px;
+}
+
+.indent_four {
+    margin: 4px 0px 0px 510px;
+}
+
+.weapon {
+    width: 250px;
+    height: 20px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    margin: 66px 0px 0px 325px;
+}
+
+.w_name {
+    width: 96px;
+    height: 18px;
+    padding: 0%;
+}
+
+.attack_bonus {
+    width: 40px;
+    height: 18px;
+    padding: 0%
+}
+
+.damage_type {
+    width: 96px;
+    height: 18px;
+    padding: 0%
+}
+
+.indent_five {
+    margin-top: 10.5px;
+}
+
+.weapon_description {
+    width: 280px;
+    height: 175px;
+    margin: 10px 0px 0px 320px;
+}
+
+.spells_and_languages {
+    width: 250px;
+    height: 205px;
+    margin: 85px 0px 0px 40px;
+}
+
+.personality_traits {
+    width: 230px;
+    height: 70px;
+    margin: -935px 0px 0px 620px;
+}
+
+.ideals {
+    width: 230px;
+    height: 50px;
+    margin: 33px 0px 0px 620px;
+}
+
+.bonds {
+    width: 230px;
+    height: 50px;
+    margin: 33px 0px 0px 620px;
+}
+
+.flaws {
+    width: 230px;
+    height: 50px;
+    margin: 33px 0px 0px 620px;
+}
+
+.money {
+    width: 40px;
+    height: 190px;
+    display: flex;
+    flex-direction: column;
+    margin: 358px 0px 0px 335px;
+}
+
+.money_type {
+    width: 35px;
+    height: 16px;
+    margin-top: 17.25px;
+}
+
+.inventory {
+    width: 200px;
+    height: 300px;
+    margin: -185px 0px 0px 395px;
+}
+
+.features_and_properties {
+    width: 250px;
+    height: 550px;
+    margin: -610px 0px 0px 610px;
+}
+
+.indent_six{
+    margin-bottom: 5px;
+}
+
+.allies_and_organizations {
+    width: 265px;
+    height: 325px;
+    margin: 60px 0px 0px 330px; 
+}
+
+.org_name {
+    width: 220px;
+    height: 25px;
+    margin: -295px 0px 0px 628px;
+}
+
+.organization_name {
+    width: 205px;
+    height: 17px; 
+}
+
+.character_backstory {
+    width: 250px;
+    height: 560px;
+    margin: 330px 0px 0px 43px;
+}
+
+.properties_and_features {
+    width: 530px;
+    height: 310px;
+    margin: -580px 0px 0px 332px;
+}
+
+.treasures {
+    width: 530px;
+    height: 235px;
+    margin: 35px 0px 0px 332px;
+}
+
+.spells_parms {
+    width: 420px;
+    height: 60px;
+    display: flex;
+    flex-direction: row;
+    margin: -44px 0px 0px 418px;
+}
+
+.spell_characteristic {
+    width: 85px;
+    height: 30px;
+}
+
+.dif_test {
+    width: 85px;
+    height: 30px;
+    margin-left: 60px;
+}
+
+.spell_attack_bonus {
+    width: 85px;
+    height: 30px;
+    margin-left: 63px;
 }
 /**/
