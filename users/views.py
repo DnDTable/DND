@@ -54,7 +54,7 @@ def logon(request):
                     login(request, user)
                     return redirect('users:profile')
                 else:
-                    messages.error(request, 'Error validating form')
+                    messages.error(request, 'Username or Password are incorrect')
 
         context = {'form': form, 'msg': msg}
         return render(request, 'registration/login.html', context)

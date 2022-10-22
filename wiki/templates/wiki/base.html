@@ -32,7 +32,7 @@
     </div>
     <div class="text_field_wrap"></div>{% block content %}{% endblock content %}
 <div class="right_field">
-    <div class="nickname">Gar-en</div>
+    <div class="nickname">{{ user.username }}</div>
     <a class="button_nav_right" href="{% url 'users:profile' %}">Профиль</a>
     <a class="button_nav_right" href="{% url 'wiki:races' %}">Справочник</a>
     <a class="button_nav_right" href="{% url 'users:main' %}">Выход</a>
