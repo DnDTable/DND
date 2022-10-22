@@ -408,4 +408,103 @@ body {
     height: 30px;
     margin-left: 63px;
 }
+
+.zero {
+    width: 265px;
+    height: 160px;
+    margin: 125px 0px 0px 35px;
+}
+
+.spell_cells_info {
+    width: 230px;
+    height: 40px;
+    display: flex;
+    flex-direction: row;
+    margin: 45px 0px 0px 65px;
+}
+
+.number_sp_cells {
+    width: 55px;
+    height: 25px;
+}
+
+.number_spent_sp_cells {
+    width: 135px;
+    height: 25px;
+    margin-left: 15px;
+}
+
+.one {
+    width: 265px;
+    height: 270px;
+    margin: 12px 0px 0px 35px;
+}
+
+.indent_seven {
+    margin-top: 22px;
+}
+
+.two {
+    width: 265px;
+    height: 270px;
+    margin: 11px 0px 0px 35px;
+}
+
+.indent_eight {
+    margin: -920px 0px 0px 350px;
+}
+
+.three {
+    width: 265px;
+    height: 269px;
+    margin: 11px 0px 0px 320px;
+}
+
+.indent_nine {
+    margin: 22px 0px 0px 350px;
+}
+
+.four {
+    width: 265px;
+    height: 270px;
+    margin: 10px 0px 0px 320px;
+}
+
+.five {
+    width: 265px;
+    height: 200px;
+    margin: 10px 0px 0px 320px;
+}
+
+.indent_ten {
+    margin: -933px 0px 0px 633px;
+}
+
+.six {
+    width: 265px;
+    height: 184px;
+    margin: 10px 0px 0px 602px;
+}
+
+.indent_eleven {
+    margin: 22px 0px 0px 633px;
+}
+
+.seven {
+    width: 265px;
+    height: 185px;
+    margin: 10px 0px 0px 602px;
+}
+
+.eight {
+    width: 265px;
+    height: 140px;
+    margin: 10px 0px 0px 602px;
+}
+
+.nine {
+    width: 265px;
+    height: 140px;
+    margin: 10px 0px 0px 602px;
+}
 /**/
