@@ -9,6 +9,10 @@ def index(request):
     return render(request, 'board/chat.html')
 
 @login_required()
+def room(request):
+    return render(request, 'board/room.html')
+
+@login_required()
 def table(request, room_name):
     return render(request, 'board/server-client.html', {'room_name': room_name})
 

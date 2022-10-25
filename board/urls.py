@@ -5,5 +5,6 @@ app_name = 'board'
 urlpatterns = [
     # Home page
     path('chat/', views.index, name='index'),
-    path('<str:room_name>/', views.table, name='table')
+    path('room/', views.room, name='room'),
+    path('<str:room_name>/', views.table, name='table'),
 ]
