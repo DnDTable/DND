@@ -30,7 +30,8 @@
 
     </div>
     <div class="block boss">
-        <div class="dice" onclick="clickDice()"><span id="diceScore"></span></div>
+        <p>Сумма кубов = <span id="diceScore">0</span></p>
+        <div class="dice" onclick="clickDice()"></div>
     </div>
     <div class="block boss">
 
@@ -42,15 +43,7 @@
         return Math.floor(Math.random() * (max + 1 - min) + min);
     }
     function clickDice () {
-        var tmp = ""
         var count = document.getElementById("diceScore")
-        for (var i = 0; i < 100000; i++){
-            if (getRandom(0, 6) == 6){
-                tmp = "yes"
-                break
-            }
-            else tmp = "no"
-        }
-        count.innerHTML = tmp
+        count.innerHTML = getRandom(1, 6) + getRandom(1, 6)
     }
 </script>
