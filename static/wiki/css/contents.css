@@ -1,5 +1,5 @@
 body {
-    font-family: segoe print;
+    /*font-family: segoe print;*/
     width: 100%;
     height: 100%;
     min-width: 1000px;
@@ -27,8 +27,10 @@ select {
 
 /*Поле кнопки*/
 .left_field {
+    font-family: 'DS Kork', arial;
     width: 250px;
     height: 100%;
+    text-decoration: none;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
@@ -111,30 +113,30 @@ select {
 
 /* Поле профиля*/
 .right_field {
+    font-family: 'DS Kork', arial;
     width: 250px;
-    height: 400px;
+    height: 350px;
     background: red;
     text-transform: uppercase;
     display: flex;
     flex-direction: column;
     position: sticky;
     text-align: center;
-    justify-content: space-between;
+    align-items: center;
+    justify-content: space-evenly;
     top: 10px;
 }
 
 .nickname {
     width: 100%;
-    height: 100px;
+    height: 40px;
     color: yellow;
     margin-top: 10px;
 }
 
 .button_nav_right {
-    margin-left: 27px;
-    margin-top: 10px;
-    width: 80%;
-    height: 70px;
+    width: 50%;
+    height: 20px;
     color: yellow;
     cursor: pointer;
 }
@@ -147,3 +149,10 @@ select {
     margin-top: 10px;
     margin-left: 20px;
 }
+
+@font-face {
+font-family: "DS Kork";  
+src: url("/static/wiki/ds-kork.ttf") format("truetype"); 
+font-style: normal; 
+font-weight: normal;
+ }
