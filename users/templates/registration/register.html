@@ -11,20 +11,22 @@
 </head>
 
 <body>
-   <a class="button_nav" href="{% url 'users:login' %}">Вход</a>
-    <form class="pic" method="post" action="{% url 'users:register' %}" class="form">
-        {% csrf_token %}
-        <div class="button">
-            <button name="submit" class="button1 reg_button"></button>
-            <input type="hidden" name="next" value="{% url 'users:login' %}"/>
-        </div>
-        <div class="text">
-            {{ form.username }}
-            {{ form.email }}
-            {{ form.password1 }}
-            {{ form.password2 }}
-        </div>
-    </form>
+    <div class="bg_reglog">
+        <a class="button_nav" href="{% url 'users:login' %}">Вход</a>
+    </div>
+        <form class="pic" method="post" action="{% url 'users:register' %}" class="form">
+            {% csrf_token %}
+            <div class="button">
+                <button name="submit" class="button1 reg_button"></button>
+                <input type="hidden" name="next" value="{% url 'users:login' %}"/>
+            </div>
+            <div class="text">
+                {{ form.username }}
+                {{ form.email }}
+                {{ form.password1 }}
+                {{ form.password2 }}
+            </div>
+        </form>
  
 </body>
 

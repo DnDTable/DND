@@ -11,18 +11,20 @@
 </head>
 
 <body>
-<a class="button_nav" href="{% url 'users:register' %}">Регистрация</a>
-    <form method="post" class="pic" action="{% url 'users:login' %}" class="form">
-        {% csrf_token %}
-        <div class="button">
-            <button name="submit" class="button1 log_button"></button>
-            <input type="hidden" name="next" value="{% url 'wiki:content' %}" />
-        </div>
-        <div class="text">
-            {{ form.username }}
-            {{ form.password }}
-        </div>
-    </form>
-    <h1>{{ msg }}</h1>
+<div class="bg_reglog">
+    <a class="button_nav" href="{% url 'users:register' %}">Регистрация</a>
+</div>
+        <form method="post" class="pic" action="{% url 'users:login' %}" class="form">
+            {% csrf_token %}
+            <div class="button">
+                <button name="submit" class="button1 log_button"></button>
+                <input type="hidden" name="next" value="{% url 'wiki:content' %}" />
+            </div>
+            <div class="text">
+                {{ form.username }}
+                {{ form.password }}
+            </div>
+        </form>
+        <h1>{{ msg }}</h1>
 </body>
 </html>
