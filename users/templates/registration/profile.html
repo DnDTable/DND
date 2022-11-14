@@ -12,8 +12,7 @@
 
 <body>
     <div class="left_side">
-        <a class="button_nav_wiki" href="{% url 'wiki:races' %}">Справочник</a>
-        <a class="button_nav_main" href="{% url 'users:logout' %}">Выход</a>
+        <a class="button_nav_play" href="{% url 'wiki:races' %}">Играть</a>
     </div>
     <div class="character_list">
         <div type="image" class="image page_1" alt="">
@@ -325,7 +324,7 @@
         <div class="nickname">{{ user.username }}</div>
         <a class="button_nav_right" href="{% url 'users:profile' %}">Профиль</a>
         <a class="button_nav_right" href="{% url 'wiki:races' %}">Справочник</a>
-        <a class="button_nav_right" href="{% url 'users:main' %}">Выход</a>
+        <a class="button_nav_right" href="{% url 'users:logout' %}">Выход</a>
     </div>
 </body>
 </html>

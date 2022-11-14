@@ -16,22 +16,22 @@ body {
 }
 
 .left_side {
-    width: 100px;
-    height: 100px;
-    text-align: left;
-    flex-direction: column;
-    justify-content: space-between;
-    margin: 10px 0 0 10px;
+    font-family: 'DS Kork', arial;
+    background: url(/static/users/images/bg_buttons.png);
+    font-size: 4rem;
+    width: 200px;
+    height: 120px;
+    text-decoration: none;
+    text-align: center;
+    text-transform: uppercase;
+    margin: 10px 0 0 15px;
 }
 
-.button_nav_wiki {
-    width: 100px;
-    height: 100%;
-}
-
-.button_nav_main {
-    width: 100px;
-    height: 100%;
+.button_nav_play {
+    width: 150px;
+    height: 80%;
+    color: yellow;
+    margin-top: 15px;
 }
 
 
@@ -39,7 +39,7 @@ body {
     font-family: 'DS Kork', arial;
     width: 250px;
     height: 350px;
-    background: red;
+    background: url(/static/users/images/bg_buttons.png);
     text-transform: uppercase;
     display: flex;
     flex-direction: column;

@@ -57,7 +57,7 @@ select {
     height: 60px;
     background-image: url(/static/wiki/images/2.png);
     background-position: center;
-    background-size: cover;
+    background-size: cover cover;
     display: flex;
     -webkit-appearance: none;
     -moz-appearance: none;
@@ -117,7 +117,7 @@ select {
     font-family: 'DS Kork', arial;
     width: 250px;
     height: 350px;
-    background: red;
+    background: url(/static/users/images/bg_buttons.png);
     text-transform: uppercase;
     display: flex;
     flex-direction: column;
