@@ -1,3 +1,7 @@
+:root {
+    --main-color-a: #ffbb00;
+}
+
 body {
     /*font-family: segoe print;*/
     width: 100%;
@@ -118,6 +122,8 @@ select {
     width: 250px;
     height: 350px;
     background: url(/static/users/images/bg_buttons.png);
+    background-size: 100% 100%;
+    color: var(--main-color-a);
     text-transform: uppercase;
     display: flex;
     flex-direction: column;
