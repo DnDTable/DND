@@ -94,6 +94,7 @@ select {
     margin-top: 10px;
     width: 80%;
     height: 30px;
+    text-decoration: none;
     -webkit-appearance: none;
     -moz-appearance: none;
     -ms-appearance: none;
@@ -137,6 +138,7 @@ select {
 .button_nav_right {
     width: 50%;
     height: 20px;
+    text-decoration: none;
     color: yellow;
     cursor: pointer;
 }
