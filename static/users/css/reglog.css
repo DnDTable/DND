@@ -46,6 +46,14 @@ select {
     margin-top: 50px;
 }
 
+.button_nav:hover {
+    transition: 0.3s;
+    opacity: 0.8;
+    padding: 5px;
+    margin-top: 5px;
+    margin-left: 10px;
+}
+
 .pic {
     width: 450px;
     height: 650px;
