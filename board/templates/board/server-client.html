@@ -185,20 +185,21 @@
     var second_element = null;
 
     let currentPlayer = document.getElementById('userNameBox').value
+    var currentPlayerMove = '';
 
     function movePlayer(e) {
         newTimer = new Date().getTime()
         if (newTimer - oldTimer > timeCooldown) {
             oldTimer = newTimer;
             // console.log(e.target.attributes.player)
-            if(e.target.className  == 'cell'){
+            if(e.target.className  == 'cell' && currentPlayer == currentPlayerMove){
                 console.log(e.target.attributes.player.value); 
                 // console.log(currentPlayer); 
                 if(first_element == null && e.target.attributes.player.value == currentPlayer){
                     first_element = e.target
                     // first_element.style.backgroundColor = 'gray'
                 }
-                else if (first_element != null){
+                else if (first_element != null && e.target.attributes.player.value.length < 1){
                     var _tmp_p = first_element.attributes.player.value
                     var _tmp_c = first_element.style.backgroundColor
                     second_element = e.target
@@ -245,6 +246,9 @@
         SendMessage('Hello Server!', "connection");
     });
     
+    // function setCurrentUser(user) {
+    //     addToConsole('')
+    // }
     // Listener получение сообщений и вывод в консоль
     socket.addEventListener('message', (event) => {
         try {
@@ -254,9 +258,10 @@
             // addToConsole("type: " + _type + " || " + event.data, 'redgar')
             var _message = _data['message']
     
-            if (_type == 'message') addToConsole(_message, _user)
+            if      (_type == 'message') addToConsole(_message, _user)
             else if (_type == 'answer') addToConsole(_message, 'sys')
             else if (_type == 'move') movePlayerRecerve(_data)
+            else if (_type == 'currentPlayerMove') currentPlayerMove = _message
             else if (_type == 'connection_status') {
                 let _user_form = document.getElementById('userNameBox')
                 // _user_form.value = _user

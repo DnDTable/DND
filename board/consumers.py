@@ -1,3 +1,4 @@
+from itertools import cycle
 from channels.generic.websocket import AsyncWebsocketConsumer
 import json
 
@@ -9,6 +10,10 @@ class ChatConsumer(AsyncWebsocketConsumer):
         self.room_group_name = f'room_{self.room_name}'
         self.user = 'user'
         
+        self.queue = ['Laterner', 'Ksasagan'] #, 'Nectorr', 'Kotedo'
+        self.pool = cycle(self.queue)
+        self.current_user = next(self.pool)
+
         await self.channel_layer.group_add(
             self.room_group_name,
             self.channel_name
@@ -54,7 +59,15 @@ class ChatConsumer(AsyncWebsocketConsumer):
                         {'type': self._type, 'message': self._message, 'user': self._user}))
                 case 'move':
                     await self.send_to_room(_type=self._type, message=self._message, user=self._user)
+
+                    self.current_user = next(self.pool)
+                    self._message = 'Ход перешёл пользователю <b style="color: yellow;">' + self.current_user + '</b>'
+                    await self.send_to_room(_type='answer', message=self._message, user=self._user)  
+                    await self.send_to_room(_type='currentPlayerMove', message=self.current_user, user=self._user)  
                 case 'connection':
+                    self.current_user = self.queue[0]
+                    await self.send_to_room(_type='currentPlayerMove', message=self.current_user, user=self._user)  
+
                     self._message = 'Пользователь <b style="color: green;">' + self._user + '</b> присоединился'
                     await self.send_to_room(_type='connection_status', message=self._message, user=self._user)
 
