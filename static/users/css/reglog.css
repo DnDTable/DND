@@ -52,7 +52,7 @@ select {
     background-image: url(/static/users/images/11.png);
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    margin: -40px 0px 0px 500px;
+    margin: -40px auto;
 }
 
 .button {
