@@ -13,8 +13,8 @@ def room(request):
     return render(request, 'board/room.html')
 
 @login_required()
-def table(request, room_name):
-    return render(request, 'board/server-client.html', {'room_name': room_name})
+def table(request):
+    return render(request, 'board/server-client.html')
 
 # @login_required()
 # def rooms(request):
