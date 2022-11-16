@@ -29,12 +29,14 @@ body {
     text-decoration: none;
     text-align: center;
     text-transform: uppercase;
+    position: sticky;
     margin: 10px 0 0 15px;
 }
 .left_side a {
     width: 150px;
     height: 80%;
     color: var(--main-color-a);
+    cursor: pointer;
 }
 
 .left_side a:hover {
