@@ -1,6 +1,6 @@
 from itertools import cycle
 from channels.generic.websocket import AsyncWebsocketConsumer
-import json
+import json, random
 
 
 class ChatConsumer(AsyncWebsocketConsumer):
@@ -10,9 +10,8 @@ class ChatConsumer(AsyncWebsocketConsumer):
         self.room_group_name = f'room_{self.room_name}'
         self.user = 'user'
         
-        self.queue = ['Laterner', 'Ksasagan'] #, 'Nectorr', 'Kotedo'
+        self.queue = ['Laterner', 'Gar', 'kotedo']
         self.pool = cycle(self.queue)
-        self.current_user = next(self.pool)
 
         await self.channel_layer.group_add(
             self.room_group_name,
@@ -53,17 +52,54 @@ class ChatConsumer(AsyncWebsocketConsumer):
 
             match self._type:
                 case 'message':
-                    await self.send_to_room(_type=self._type, message=self._message, user=self._user)
+                    if self._message[0:3].lower() == '/d6':
+                        r1 = random.randint(1, 6)
+                        self._message = f"Результат броска от 1 до 6: {r1}."
+                        await self.send_to_room(_type=self._type, message=self._message, user=self._user)
+                    elif self._message[0:3].lower() == '/d4':
+                        r1 = random.randint(1, 4)
+                        self._message = f"Результат броска от 1 до 4: {r1}."
+                        await self.send_to_room(_type=self._type, message=self._message, user=self._user)
+                    elif self._message[0:3].lower() == '/d8':
+                        r1 = random.randint(1, 8)
+                        self._message = f"Результат броска от 1 до 8: {r1}."
+                        await self.send_to_room(_type=self._type, message=self._message, user=self._user)
+                    elif self._message[0:4].lower() == '/d10':
+                        r1 = random.randint(1, 10)
+                        self._message = f"Результат броска от 1 до 10: {r1}."
+                        await self.send_to_room(_type=self._type, message=self._message, user=self._user)
+                    elif self._message[0:4].lower() == '/d12':
+                        r1 = random.randint(1, 10)
+                        self._message = f"Результат броска от 1 до 12: {r1}."
+                        await self.send_to_room(_type=self._type, message=self._message, user=self._user)
+                    elif self._message[0:4].lower() == '/d20':
+                        r1 = random.randint(1, 20)
+                        r2 = random.randint(1, 20)
+
+                        self._message = f"Результат броска от 1 до 20: {r1}."
+                        await self.send_to_room(_type=self._type, message=self._message, user=self._user)
+                    elif self._message[0:5].lower() == '/next':
+                        self.current_user = next(self.pool)
+                        self._message = 'Ход перешёл пользователю <b style="color: yellow;">' + self.current_user + '</b>'
+                        await self.send_to_room(_type='answer', message=self._message, user=self._user)  
+                        await self.send_to_room(_type='currentPlayerMove', message=self.current_user, user=self._user)  
+                    elif self._message[0:5].lower() == '/help':
+                        self._message = 'Подсказки: <br /> /help - вывод подсказок <br /> /next - передать ход<br /> ' \
+                        '/d4, /d6, /d8, /d10, /d20 - бросить кубики'
+                        await self.send_to_room(_type='answer', message=self._message, user=self._user)  
+                    else:
+                        await self.send_to_room(_type=self._type, message=self._message, user=self._user)
+                    
                 case 'answer':
                     await self.send(text_data=json.dumps(
                         {'type': self._type, 'message': self._message, 'user': self._user}))
                 case 'move':
                     await self.send_to_room(_type=self._type, message=self._message, user=self._user)
 
-                    self.current_user = next(self.pool)
-                    self._message = 'Ход перешёл пользователю <b style="color: yellow;">' + self.current_user + '</b>'
-                    await self.send_to_room(_type='answer', message=self._message, user=self._user)  
-                    await self.send_to_room(_type='currentPlayerMove', message=self.current_user, user=self._user)  
+                    # self.current_user = next(self.pool)
+                    # self._message = 'Ход перешёл пользователю <b style="color: yellow;">' + self.current_user + '</b>'
+                    # await self.send_to_room(_type='answer', message=self._message, user=self._user)  
+                    # await self.send_to_room(_type='currentPlayerMove', message=self.current_user, user=self._user)  
                 case 'connection':
                     self.current_user = self.queue[0]
                     await self.send_to_room(_type='currentPlayerMove', message=self.current_user, user=self._user)  

@@ -27,7 +27,7 @@
         .message_сonteiner {
             width: 600px;
             padding: 0 5px;
-            height: 570px;
+            height: 770px;
             overflow: auto;
             border: 1px solid black;
             border-radius: 10px;
@@ -82,13 +82,13 @@
         
         .table{
             border: 2px solid black;
-            width: 600px;
-            height: 600px;
+            width: 800px;
+            height: 800px;
             /*подключаем сетку*/
             display: grid;
             /*формируем по 4 одинаковых строки и столбца*/
-            grid-template-columns: repeat(6, 100px);
-            grid-template-rows: repeat(6, 100px);
+            grid-template-columns: repeat(8, 100px);
+            grid-template-rows: repeat(8, 100px);
             overflow: hidden;
             float: left;
         }
@@ -103,6 +103,15 @@
         .redcell {
             background-color: red;
         }
+        .noselect {
+            -webkit-touch-callout: none; /* iOS Safari */
+              -webkit-user-select: none; /* Safari */
+               -khtml-user-select: none; /* Konqueror HTML */
+                 -moz-user-select: none; /* Old versions of Firefox */
+                  -ms-user-select: none; /* Internet Explorer/Edge */
+                      user-select: none; /* Non-prefixed version, currently
+                                        supported by Chrome, Edge, Opera and Firefox */
+        }
     </style>
 <head>
     <meta charset="UTF-8">
@@ -111,7 +120,7 @@
     <title>Document</title>
 </head>
 <body>
-    <div id="table" class="table"></div>
+    <div id="table" class="table noselect"></div>
     <div class="wrapper_message_conteiner">
         <div class="message_сonteiner" id="messageConteiner"></div>
         <div class="message_box_conteiner">
@@ -131,12 +140,12 @@
     let url = `ws://${window.location.host}/ws/socket-server/${room_name}`
     
     const socket = new WebSocket(
-            'ws://'
-            + window.location.host
-            + '/ws/socket-server/'
-            + 'table'
-            + '/'
-        );
+        'ws://'
+        + window.location.host
+        + '/ws/socket-server/'
+        + 'table'
+        + '/'
+    );
 
     let _color = 'rgb(185, 163, 133)'
     let map = [
@@ -150,13 +159,14 @@
         {'id':7,  'player':'', 'data': _color},
         {'id':8,  'player':'', 'data': _color},
         {'id':9,  'player':'', 'data': _color},
-        {'id':10, 'player':'', 'data': _color},
-        {'id':11, 'player':'', 'data': _color},
-        {'id':12, 'player':'', 'data': _color},
-        {'id':13, 'player':'Laterner', 'data': 'green'},
-        {'id':14, 'player':'Ksasagan', 'data': 'coral'},
-        {'id':15, 'player':'Nectorr', 'data': 'silver'},
-        {'id':16, 'player':'Kotedo', 'data': 'purpule'},
+        {'id':10, 'player':'Laterner', 'data': 'green'},
+        {'id':11, 'player':'Gar', 'data': 'coral'},
+        // {'id':12, 'player':'Nectorr', 'data': 'silver'},
+        {'id':12, 'player':'kotedo', 'data': 'purpule'},
+        {'id':13, 'player':'', 'data': _color},
+        {'id':14, 'player':'', 'data': _color},
+        {'id':15, 'player':'', 'data': _color},
+        {'id':16, 'player':'', 'data': _color},
         {'id':17, 'player':'', 'data': _color},
         {'id':18, 'player':'', 'data': _color},
         {'id':19, 'player':'', 'data': _color},
@@ -176,6 +186,35 @@
         {'id':33, 'player':'', 'data': _color},
         {'id':34, 'player':'', 'data': _color},
         {'id':35, 'player':'', 'data': _color},
+        {'id':36, 'player':'', 'data': _color},
+        {'id':37, 'player':'', 'data': _color},
+        {'id':38, 'player':'', 'data': _color},
+        {'id':39, 'player':'', 'data': _color},
+        {'id':40, 'player':'', 'data': _color},
+        {'id':41, 'player':'', 'data': _color},
+        {'id':42, 'player':'', 'data': _color},
+        {'id':43, 'player':'', 'data': _color},
+        {'id':44, 'player':'', 'data': _color},
+        {'id':45, 'player':'', 'data': _color},
+        {'id':46, 'player':'', 'data': _color},
+        {'id':47, 'player':'', 'data': _color},
+        {'id':48, 'player':'', 'data': _color},
+        {'id':49, 'player':'', 'data': _color},
+        {'id':50, 'player':'', 'data': _color},
+        {'id':51, 'player':'', 'data': _color},
+        {'id':52, 'player':'', 'data': _color},
+        {'id':53, 'player':'', 'data': _color},
+        {'id':54, 'player':'', 'data': _color},
+        {'id':55, 'player':'', 'data': _color},
+        {'id':56, 'player':'', 'data': _color},
+        {'id':57, 'player':'', 'data': _color},
+        {'id':58, 'player':'', 'data': _color},
+        {'id':59, 'player':'', 'data': _color},
+        {'id':60, 'player':'', 'data': _color},
+        {'id':61, 'player':'', 'data': _color},
+        {'id':62, 'player':'', 'data': _color},
+        {'id':63, 'player':'', 'data': _color},
+        {'id':64, 'player':'', 'data': _color},
     ]
 
     
@@ -193,7 +232,7 @@
         if (newTimer - oldTimer > timeCooldown) {
             oldTimer = newTimer;
             // console.log(e.target.attributes.player)
-            if(e.target.className  == 'cell' && currentPlayer == currentPlayerMove){
+            if(e.target.className  == 'cell' ){
                 console.log(e.target.attributes.player.value); 
                 // console.log(currentPlayer); 
                 if(first_element == null && e.target.attributes.player.value == currentPlayer){
@@ -205,19 +244,20 @@
                     var _tmp_c = first_element.style.backgroundColor
                     second_element = e.target
 
-                    first_element.style.backgroundColor = second_element.style.backgroundColor
-                    first_element.attributes.player.value = ''
+                    // first_element.style.backgroundColor = second_element.style.backgroundColor
+                    // first_element.attributes.player.value = ''
 
-                    second_element.style.backgroundColor = _tmp_c
-                    second_element.attributes.player.value = _tmp_p
+                    // second_element.style.backgroundColor = _tmp_c
+                    // second_element.attributes.player.value = _tmp_p
 
                     SendMessage({'id_1': first_element.attributes.id.value, 'id_2': second_element.attributes.id.value}, 'move', currentPlayer)
 
-                    first_element = null
+                    first_element = second_element
                 }
             }
         }
     }
+
     function movePlayerRecerve(_data){
         message = _data.message
         user = _data.user
@@ -226,15 +266,15 @@
         cell_1 = document.getElementById(message.id_1)
         cell_2 = document.getElementById(message.id_2)
 
+        cell_2.style.backgroundColor = cell_1.style.backgroundColor
         cell_1.style.backgroundColor = _color
-        cell_2.style.backgroundColor = 'green'
 
-        cell_1.attributes.player.value = 'none'
+        cell_1.attributes.player.value = ''
         cell_2.attributes.player.value = user
     } 
     function onPageLoad() {      
         let table = document.getElementById('table');
-        for (let i = 0; i < 36; i++){
+        for (let i = 0; i < map.length; i++){
             let element =  `<div id="${map[i].id}" class='cell' player='${map[i].player}' style="background-color: ${map[i].data}"><p style="color: white">${map[i].id}</p></div>`
             document.addEventListener('click', e => { movePlayer(e) })
             table.insertAdjacentHTML('beforeend', element)
